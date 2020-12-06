@@ -1,0 +1,53 @@
+<!-- Navbar -->
+<nav>
+   <!--  Navbar structure, visible on desktop -->
+   <div class="nav-wrapper row">
+      <!-- Brand Logo -->
+      <div class="col l3 s12">
+         <a href="{{ url_for('index') }}" class="brand-logo">Bookmania</a>
+      </div>
+      <div class="col l6 s12">
+         <!--  Trigger sidenav  -->
+         <a href="javascript:void(0)" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+         <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            {% if session.user %}
+            <li><a href="{{ url_for('listing') }}">All Reviews</a></li>
+            <li><a href="{{ url_for('add_book') }}">Add Book</a></li>
+            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
+         </ul>
+         <!--  Sidenav structure, visible on tablet and mobile  -->
+         <ul id="slide-out" class="sidenav">
+            <li><a class="waves-effects" href="{{ url_for('index') }}">Home</a></li>
+            {% if session.user %}
+            <li><a href="{{ url_for('listing') }}">All Reviews</a></li>
+            <li><a class="waves-effects" href="{{ url_for('add_book') }}">Add Book</a></li>
+            <li><a class="waves-effects" href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+            <li><a class="waves-effects" href="{{ url_for('logout') }}">Log Out</a></li>
+            {% else %}
+            <li><a class="waves-effects" href="{{ url_for('login') }}">Log In</a></li>
+            <li><a class="waves-effects" href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
+         </ul>
+      </div>
+      <!-- Search bar -->
+      <div class="col l3 s12 search-bar">
+         <div class="row center search-bar">
+            <form action="{{ url_for('search') }}" method="POST" class="col s12">
+               <div class="input-field">
+                  <input id="search" name="search" placeholder="Search Book" type="search" required>
+                  <label class="label-icon"  for="search"><i class="material-icons">search</i></label>
+                  <i class="material-icons">close</i>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
+</nav>
+<!-- End Navbar -->
+

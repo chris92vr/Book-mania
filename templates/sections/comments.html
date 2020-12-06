@@ -1,0 +1,22 @@
+{% if session.user %}
+<form action="{{ url_for('add_comment', book_id=book._id ) }}" method="POST" class="col s12 comment-form">
+   <fieldset>
+      <legend>Add a Comment</legend>
+      <!-- COMMENT -->
+      <div class='form-group'>
+         <label for='comment'>Write your comment:</label><br>
+         <textarea class='form-control'
+            id='comment'
+            name='comment'
+            rows='10'
+            placeholder='Your comment...'></textarea>
+      </div>
+   </fieldset>
+   <!-- BUTTON -->
+   <div class='form-group'>
+      <button class='btn blue' type='submit'>Save Comment</button>
+   </div>
+</form>
+{% else %}
+<a class="btn blue center" href="{{ url_for('login') }}">Log in</a> or <a class="btn blue center" href="{{ url_for('register') }}">Register</a> for comment
+{% endif %}

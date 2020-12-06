@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="title">
+   <h2 class="center white-text">Book Reviews</h2>
+   <hr>
+</div>
+<div class="row">
+   {% for book in books %}
+   <div class="col s12 m6">
+      <div class="card horizontal small">
+         <div class="card-image">
+            {% if book.cover_image_url %}
+            <img class="book-image" src="{{ book.cover_image_url }}">                        {% else %}
+            <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
+               class="img-fluid" alt="Book Image">
+            {% endif %}
+         </div>
+         <div class="card-stacked">
+            <div class="card-content">
+               <h4>{{ book.book_name }}</h4>
+               <strong>Author:</strong>
+               <span>{{ book.book_author }}</span><br>
+               <strong>Publisher:</strong>
+               <span>{{ book.book_publisher }}</span><br>
+               <strong>Category:</strong>
+               <span>{{ book.category_name }}</span><br>
+               <strong>Number of Pages:</strong>
+               <span>{{ book.number_pages }}</span><br>
+            </div>
+            <div class="card-action">
+               <a class="blue-text"href="{{ url_for('browse', book_id=book._id) }}">View Book</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   {% endfor %}
+</div>
+<div class="row mt-4 mb-3">
+   <div class="col-sm-12">
+      <!--Pagination-->
+      <ul id="num_pages" class="valign-wrapper ">
+         <!--Previous Page-->
+         {% if current_page | int > 1 %}
+         <li class="page-item">
+            <a class="page-link text-secondary"
+               href="{{ url_for('listing', current_page=current_page-1) }}">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+            <span class="sr-only">Prev</span>
+            </a>
+         </li>
+         {% else %}
+         <li class="page-item disabled"></li>
+         {% endif %}
+         <!--Page Numbers-->
+         {% for page_number in pages %}
+         {% if page_number == current_page %}
+         <li class="page-item active text-secondary black-text">
+            <a class="page-link">{{ page_number }}</a>
+         </li>
+         {% else %}
+         <li class="page-item">
+            <a class="page-link text-secondary"
+               href="{{ url_for('listing', current_page=page_number) }}">{{ page_number }}</a>
+         </li>
+         {% endif %}
+         {% endfor %}
+         <!--Next Page-->
+         {% if current_page | int < pages | count | int %}
+         <li class="page-item">
+            <a class="page-link text-secondary"
+               href="{{ url_for('listing', current_page=current_page+1) }}">
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            <span class="sr-only">Prev</span>
+            </a>
+         </li>
+         {% else %}
+         <li class="page-item disabled"></li>
+         {% endif %}
+      </ul>
+   </div>
+</div>
+<a id="button"><i id="arrow-up" class="fas fa-arrow-circle-up"></i></a>
+{% endblock %}
+

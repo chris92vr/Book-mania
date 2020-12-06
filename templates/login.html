@@ -1,0 +1,42 @@
+<!-- Login Form -->
+{% extends "base.html" %}
+{% block content %}
+<h3 class="white-text center-align">Log In</h3>
+{% from "_render_field.html" import render_field %}
+<div class="row">
+   <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('login') }}">
+      {{ form.csrf_token }}
+      <div class="card-panel">
+         <!-- username -->
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="fas fa-user-cog prefix light-blue-text text-darken-4"></i>
+               {{ render_field(form.username, placeholder=form.username.label.text) }}
+            </div>
+         </div>
+         <!-- passowrd -->
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
+               {{ render_field(form.password, placeholder=form.password.label.text) }}
+            </div>
+         </div>
+         <!-- login -->
+         <div class="row">
+            <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
+            Log In <i class="fas fa-sign-in-alt"></i>
+            </button>
+         </div>
+      </div>
+   </form>
+</div>
+<div class="row">
+   <div class="col s12">
+      <p class="center-align white-text">
+         New Here?
+         <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Register Account</a>
+      </p>
+   </div>
+</div>
+{% endblock %}
+

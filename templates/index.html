@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Homepage welcome section -->
+<div class="welcome-section center">
+
+          
+   <h2>Welcome to Bookmania</h2>
+   <p>Read Reviews, Find New Books and Share Opinions</p>
+   
+    {% if session.user %}
+    <a class="btn waves-effect blue  center" href="{{ url_for('add_book') }}">Add Book</a>
+    <a class="btn waves-effect blue  center" href="{{ url_for('listing') }}">All Reviews</a>
+    {% else %}
+    <p>Register or log in to access our reviews</p>
+             <a class="btn waves-effect blue  center" href="{{ url_for('register') }}">Register</a>
+             <a class="btn waves-effect blue  center" href="{{ url_for('login') }}">Log In</a>
+            {% endif %} 
+   
+</div>
+
+    <div class="welcome-section center">
+   <h2 id="subtitle" class="center ">Our last book reviews:</h2>
+</div>
+
+   <div class="carousel">
+   {% for book in books %}
+      <div class="carousel-item">
+       {% if book.cover_image_url %}
+ <img class="book-image" src="{{ book.cover_image_url }}">                        {% else %}
+                        <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
+                            class="img-fluid details-property-img" alt="Property Image">
+                        {% endif %}
+       
+        <a class="btn-floating halfway-fab waves-effect waves-light red" href="https://www.amazon.com/s?k={{ book.book_name }}+{{ book.book_author }}+book&ref=nb_sb_noss_1" target=”_blank”><i  class="material-icons">add_shopping_cart</i></a>
+         <div class="white">
+        
+             <strong>Name:</strong>
+            <span>{{ book.book_name }}</span><br>
+            <strong>Author:</strong>
+            <span>{{ book.book_author }}</span><br>
+            <strong>Category:</strong>
+            <span>{{ book.category_name }}</span><br>
+            {% if session.user %}
+             <a href="{{ url_for('browse', book_id=book._id) }}">View Book</a>
+             {% endif %} 
+         </div>
+      </div>
+      {% endfor %}
+            </div>
+
+
+
+<a id="button"><i id="arrow-up" class="fas fa-arrow-circle-up"></i></a>
+
+
+
+{% endblock %}
+ 

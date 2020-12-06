@@ -1,0 +1,15 @@
+<section id="comment-section">
+   {% for comment in comments %}
+   <div class='card'>
+      <div class='card-block'>
+         <p class='card-title'>{{ comment.created_by }} say:</p>
+         <h4 class='card-text'>{{ comment.comment }}</h4>
+         {% if session.user == comment.created_by %}
+         <a href="{{ url_for('delete_comment', comment_id=comment._id, book_id=book._id) }}" class="delete">Delete</a>
+         {% endif %} 
+      </div>
+   </div>
+   {% else %}
+   <p>No comments yet. Be the first to comment.</p>
+</section>
+{% endfor %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+   <div class="col s12 m8 offset-m2">
+      <h3 class="center-align white-text">
+         My Profile
+      </h3>
+      <div class="card-panel">
+         <h3 class="center-align text-darken 4">
+            {{ username }}
+         </h3>
+         <div class="center-align container profile-buttons">
+            <a class="btn blue " href="{{ url_for('myreviews')}}">My Reviews</a>
+            <a class="btn blue " href="{{ url_for('add_book') }}">Add Book</a>
+            <a class="blue  btn modal-trigger" href="#delete_account">Delete account</a>
+         </div>
+         <div class="container center statistic blue white-text">
+            <div class="row">
+               <div class="col l4 m4 s4">
+                  <div class=""> {{ myreview }} </div>
+                  <div class=""> Book Added </div>
+               </div>
+               <div class="col l4 m4 s4">
+                  <div class=""> {{mycomment}} </div>
+                  <div class=""> Comment Added </div>
+               </div>
+               <div class="col l4 m4 s4">
+                  <div class=""> {{review_viewed.review_viewed}} </div>
+                  <div class=""> Book Review Viewed </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="col-11 col-md-6">
+      <!-- Modal Trigger -->
+      <!-- Modal Structure -->
+      <div id="delete_account" class="modal">
+         <div class="modal-content">
+            <h4>Delete account </h4>
+            <p>{{ username }}, are you sure to would delete your bookmania's account?</p>
+         </div>
+         <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Disagree</a>
+            <a href="{{ url_for('delete_account')}}" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}

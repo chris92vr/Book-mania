@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container book-container">
+   <div class="row ">
+      <div class="row col s12 m7 ">
+         <h3 class="col s12">{{ book.book_name }}</h3>
+         <span class="col m6"></span>
+      </div>
+      <div class="row">
+         <div class="col m7 book-image-box">
+            {% if book.cover_image_url %}
+            <img class="book-image" src="{{ book.cover_image_url }}">                        {% else %}
+            <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
+               class="img-fluid" alt="Book Image">
+            {% endif %}
+         </div>
+         <div class="col m5">
+            <div class="col s12">
+               <div class="row col s12 ">
+                  <ul class="col s12 ">
+                     <li class="content-between">
+                        <h4>Information:</h4>
+                     </li>
+                     <li class="content-between">
+                        <h6>Author: {{ book.book_author }}</h6>
+                     </li>
+                     <li class="d-flex justify-content-between">
+                        <h6>Publisher:  {{ book.book_publisher }}</h6>
+                     </li>
+                     <li class="d-flex justify-content-between">
+                        <h6>Category:  {{ book.category_name }}</h6>
+                     </li>
+                     <li class="d-flex justify-content-between">
+                        <h6>Number of Pages: {{ book.number_pages }}</h6>
+                     </li>
+                     <li class="d-flex justify-content-between">
+                        <h6>Valutation: {{ book.rating }}/100</h6>
+                     </li>
+                     <li class="d-flex justify-content-between">
+                        <h6>added by {{ book.created_by }}</h6>
+                     </li>
+                     <a class="btn halfway-fab blue" target="_blank" href="https://www.amazon.com/s?k={{ book.book_name }}+{{ book.book_author }}+book&ref=nb_sb_noss_1">buy<i  class="material-icons">add_shopping_cart</i></a>
+                     {% if session.user == book.created_by %}
+                     <br> <br><a class="btn  waves-effect waves-light yellow" href="{{ url_for('edit_book', book_id=book._id) }}">Edit<i  class="material-icons">edit</i></a>
+                     <br> <a class="btn  waves-effect waves-light red modal-trigger" href="#delete_book">Delete<i  class="material-icons">delete</i></a>
+                     <div id="delete_book" class="modal">
+                        <div class="modal-content">
+                           <h4>Delete book </h4>
+                           <p>{{ session.user }}, are you sure to would delete {{ book.book_name }} from our book collection?</p>
+                        </div>
+                        <div class="modal-footer">
+                           <a href="#!" class="modal-close waves-effect waves-green btn-flat">exit</a>
+                           <a href="{{ url_for('delete_book', book_id=book._id) }}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
+                        </div>
+                     </div>
+                     {% endif %} 
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <hr>
+   <div class="container col-12">
+      <div class="row ">
+         <h6>Description</h6>
+      </div>
+      <div class="property-description mb-3">
+         <h7>{{ book.book_description }}</h7>
+      </div>
+   </div>
+   <hr>
+   <div class="container col-12">
+      <div class="row ">
+         <h6>Review</h6>
+      </div>
+      <div class="property-description mb-3">
+         <h7>{{ book.book_review }}</h7>
+      </div>
+   </div>
+   <hr>
+   {% include 'sections/comments.html' %} 
+   {% include 'sections/comment.html' %} 
+</section>
+<a id="button"><i id="arrow-up" class="fas fa-arrow-circle-up"></i></a>
+{% endblock %}
+

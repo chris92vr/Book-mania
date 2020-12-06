@@ -1,0 +1,24 @@
+{% macro render_field_2(field) %}
+
+					
+                    {{ field( **kwargs)|safe }}
+        <ul>
+        {% for error in field.errors %}
+            <li style="color:red;">{{ error }}</li>
+        {% endfor %}
+        </ul>
+					
+            
+              
+{% endmacro %}
+{% macro render_textarea_field(field) %}
+
+					
+                    {{ field(class_='materialize-textarea', **kwargs)|safe }}
+        <ul>
+        {% for error in field.errors %}
+            <li style="color:red;">{{ error }}</li>
+        {% endfor %}
+        </ul>
+					
+{% endmacro %}

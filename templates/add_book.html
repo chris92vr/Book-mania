@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+<h3 class="white-text text-darken-4 center-align">Add book</h3>
+{% from "_render_field_2.html" import render_field_2, render_textarea_field %}
+<div class="row card-panel grey lighten-5">
+   <form class="col s12" method="POST" action="{{ url_for('add_book') }}">
+      <!-- book name -->
+      {{ form.csrf_token }}
+      <div class="row">
+         <div class="input-field col s6">
+            <i class="fas fa-book pencil-alt prefix light-blue-text text-darken-4"></i>
+            {{ render_field_2(form.name, placeholder=form.name.label.text) }}
+         </div>
+         <!-- book author -->
+         <div class="input-field col s6">
+            <i class="fas fa-book-reader pencil-alt prefix light-blue-text text-darken-4"></i>
+            {{ render_field_2(form.author, placeholder=form.author.label.text) }}
+         </div>
+      </div>
+      <!-- book publisher-->
+      <div class="row">
+         <div class="input-field col s6">
+            <i class="far fa-newspaper prefix light-blue-text text-darken-4"></i>
+            {{ render_field_2(form.publisher, placeholder=form.publisher.label.text) }}
+         </div>
+         <!-- number of pages-->
+         <div class="input-field col s6">
+            <i class="fas fa-book-open prefix light-blue-text text-darken-4"></i>
+            {{ render_field_2(form.npages, placeholder=form.npages.label.text) }}
+         </div>
+      </div>
+      <!-- category selection -->
+      <div class="row">
+         <div class="input-field col s6">
+            <i class="far fa-gem prefix light-blue-text text-darken-4"></i>
+            <select id="category_name" name="category_name" required>
+               <option value="" disabled selected>Choose Category</option>
+               {% for category in categories %}
+               <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+               {% endfor %}
+            </select>
+            <label for="category_name">book Category</label>
+         </div>
+         <!-- cover image -->
+         <div class="row">
+            <div class="input-field col s6">
+               <i class="fas fa-file-image prefix light-blue-text text-darken-4"></i>
+               {{ render_textarea_field(form.coverimageurl, placeholder=form.coverimageurl.label.text) }}
+            </div>
+         </div>
+         <!-- book description -->
+         <div class="row">
+            <div class="input-field col s6">
+               <i class="fas fa-align-left prefix light-blue-text text-darken-4"></i>
+               {{ render_textarea_field(form.bookdescription, placeholder=form.bookdescription.label.text) }}
+            </div>
+            <div class="input-field col s6">
+               <i class="fas fa-bookmark prefix light-blue-text text-darken-4"></i>
+               {{ render_textarea_field(form.bookreview, placeholder=form.bookreview.label.text) }}
+            </div>
+         </div>
+         <!-- due date picker -->
+         <div class="row">
+            <div class="input-field col s6">
+               <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;publication date:
+               <input id="publication_date" name="publication_date" type="date"  required>
+               <label for="publication_date"></label>
+            </div>
+            <div class="col s6 input-field">
+               <i class="fas fa-star  prefix light-blue-text text-darken-4"></i>&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;valutation:
+               <p class="range-field">
+                  <label for="test5">enter the rating from 0 to 100</label>
+                  <input name="rating" type="range" id="test5" min="0" max="100" required/>
+               </p>
+            </div>
+         </div>
+      </div>
+      <!-- submit button -->
+      <div class="row">
+         <div class="col s12 center-align">
+            <button type="submit" class="btn-large light-blue darken-1 text-shadow">
+            Add book <i class="fas fa-plus-square right"></i>
+            </button>
+         </div>
+      </div>
+   </form>
+</div>
+{% endblock %}
+
