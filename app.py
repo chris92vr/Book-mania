@@ -1,12 +1,18 @@
-import os, math, env
+import os
+import math
+import requests
+
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from form import LoginForm, AddBookForm
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, IntegerField, TextAreaField, DateField, SelectField
+from wtforms.validators import InputRequired, Length, NumberRange, URL
 from werkzeug.security import generate_password_hash, check_password_hash
-
+if os.path.exists("env.py"):
+    import env
 
 
 app = Flask(__name__)
@@ -18,39 +24,32 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+class LoginForm(FlaskForm):
+    username = StringField('username', validators=[InputRequired('A username is required!'), Length(min=5, max=10, message='Must be between 5 and 10 characters.')])
+    password = PasswordField('password', validators=[InputRequired('Password is required!'), Length(min=5, max=10, message='Must be between 5 and 10 characters.')])
 
+class AddBookForm(FlaskForm):
+    name = StringField('name', validators=[InputRequired('A book name is required!'), Length(min=3, max=25, message='Must be between 3 and 25 characters.')])
+    author = StringField('author', validators=[InputRequired('A author is required!'), Length(min=3, max=25, message='Must be between 3 and 25 characters.')])
+    publisher = StringField('publisher', validators=[InputRequired('A publisher is required!'), Length(min=4, max=20, message='Must be between 4 and 20 characters.')])
+    npages = IntegerField('number pages',  validators=[InputRequired('Number of pages is required!'), NumberRange(min=1, max=20000, message='Must be between 1 and 20000.')])
+    coverimageurl = StringField('cover image url', validators=[URL(message='Must be a valid URL.')])
+    bookdescription = TextAreaField('book description', validators=[InputRequired('A coverimageurl is required!'), Length(min=3, max=1500, message='Must be between 3 and 1500 characters.')])
+    bookreview = TextAreaField('book review', validators=[InputRequired('A bookreview is required!'), Length(min=3, max=1500, message='Must be between 3 and 1500 characters.')])
+
+
+@app.route('/form', methods=('GET', 'POST'))
 
 @app.route("/")
 def index():
-    page_title = "Home"
+    page_title ="Home"
     books = mongo.db.book.find().sort("_id", -1).limit(5)
-    return render_template("index.html", books = books, page_title =
-    page_title)
+    return render_template("index.html", books=books,page_title=page_title)
 
 @app.route("/listing")
 def listing():
-    books = mongo.db.book.find().sort("_id", -1)# Pagination
-    books_pagination = books.count()
-    books_per_page = 6
-    current_page = int(request.args.get("current_page", 1))
-    num_pages = range(
-    1, int(math.ceil(books_pagination / books_per_page)) + 1
-    )
-    books = books.skip((current_page - 1) * books_per_page).limit(
-    books_per_page
-    )
-    page_title = "Our Book Review"
-    return render_template("listing.html", books = books,
-    current_page = current_page,
-    pages = num_pages, page_title = page_title)
-
-@app.route("/myreviews")
-def myreviews():
-    page_title = "My Reviews"
-    username = session["user"]
-    books = mongo.db.book.find({
-        'created_by': username
-    }).sort("_id", -1)# Pagination
+    books = mongo.db.book.find().sort("_id", -1)
+     # Pagination
     books_pagination = books.count()
     books_per_page = 6
     current_page = int(request.args.get("current_page", 1))
@@ -58,22 +57,42 @@ def myreviews():
         1, int(math.ceil(books_pagination / books_per_page)) + 1
     )
     books = books.skip((current_page - 1) * books_per_page).limit(
-        books_per_page)
-    return render_template("listing.html", books = books, current_page = current_page, pages = num_pages, page_title = page_title)
+        books_per_page
+    ) 
+    page_title = "Our Book Review"
+    return render_template("listing.html", books=books, 
+    current_page=current_page,
+    pages=num_pages,page_title=page_title)
 
+@app.route("/myreviews")
+def myreviews():
+    page_title="My Reviews"
+    username = session["user"]
+    books = mongo.db.book.find({'created_by': username}).sort("_id", -1)
+     # Pagination
+    books_pagination = books.count()
+    books_per_page = 6
+    current_page = int(request.args.get("current_page", 1))
+    num_pages = range(
+        1, int(math.ceil(books_pagination / books_per_page)) + 1
+    )
+    books = books.skip((current_page - 1) * books_per_page).limit(
+        books_per_page
+    )
+    return render_template("listing.html", books=books, 
+    current_page=current_page,
+    pages=num_pages,page_title=page_title)
+
+  
 @app.route("/browse/<book_id>")
 def browse(book_id):
-    book = mongo.db.book.find_one({
-        '_id': ObjectId(book_id)
-    })
-    comments = mongo.db.comment.find({
-    'book_id': ObjectId(book_id)
-    })
-    page_title = "View Book"
     book = mongo.db.book.find_one({'_id': ObjectId(book_id)})
-    mongo.db.users.update({"username": session["user"]}, {"$inc": {"review_viewed": 1}})
-    return render_template("browse.html", book = book, comments =
-    comments, page_title = page_title)
+    comments = mongo.db.comment.find({'book_id': ObjectId(book_id)})
+    page_title = "View Book"
+    if session["user"]:
+        mongo.db.users.update({"username": session["user"]}, {"$inc": { "review_viewed": 1}})
+    book = mongo.db.book.find_one({'_id': ObjectId(book_id)})
+    return render_template("browse.html", book=book, comments=comments, page_title=page_title)
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
