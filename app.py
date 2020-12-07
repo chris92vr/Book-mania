@@ -274,6 +274,7 @@ def update_book(book_id):
 @app.route("/delete_book/<book_id>")
 def delete_book(book_id):
     mongo.db.book.remove({"_id": ObjectId(book_id)})
+    mongo.db.comment.remove({"_id": ObjectId(book_id)})
     flash("Book Successfully Deleted")
     return redirect(url_for("index"))
 
