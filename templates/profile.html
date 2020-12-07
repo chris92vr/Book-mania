@@ -18,15 +18,27 @@
             <div class="row">
                <div class="col l4 m4 s4">
                   <div class=""> {{ myreview }} </div>
+                  {% if myreview == 1 %}
                   <div class=""> Book Added </div>
+                  {% else %}
+                  <div class=""> Books Added </div>
+                  {% endif %} 
                </div>
                <div class="col l4 m4 s4">
                   <div class=""> {{mycomment}} </div>
+                  {% if mycomment == 1 %}
                   <div class=""> Comment Added </div>
+                  {% else %}
+                  <div class=""> Comments Added </div>
+                  {% endif %} 
                </div>
                <div class="col l4 m4 s4">
                   <div class=""> {{review_viewed.review_viewed}} </div>
-                  <div class=""> Book Review Viewed </div>
+                  {% if review_viewed.review_viewed == 1 %}
+                  <div class="">Book Review Viewed </div>
+                  {% else %}
+                  <div class=""> Book Reviews Viewed </div>
+                  {% endif %} 
                </div>
             </div>
          </div>
