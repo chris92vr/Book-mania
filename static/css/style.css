@@ -142,6 +142,12 @@ div.welcome-section h2 p {
      margin-top: 2rem;
 }
 
+.sidenav li a{
+  font-size: 2rem; 
+  padding: 3.5rem;
+  color: #8989bb;
+
+}
 /* Styles for the content section */
 
 .content {
