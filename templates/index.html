@@ -5,14 +5,14 @@
 <div class="welcome-section center">
 
           
-   <h1>Welcome to Bookmania</h2>
-   <h3>Read Reviews, Find New Books and Share Opinions</p>
+   <h1>Welcome to Bookmania</h1>
+   <h3>Online community for book lovers</h3>
    
     {% if session.user %}
     <a class="btn waves-effect blue  center" href="{{ url_for('add_book') }}">Add Book</a>
     <a class="btn waves-effect blue  center" href="{{ url_for('listing') }}">All Reviews</a>
     {% else %}
-    <u>Register or log in to access our reviews</u><br>
+    <h3 class="red-text"><u>Register or log in to access our reviews</u><br></h3>
              <a class="btn waves-effect blue  center" href="{{ url_for('register') }}">Register</a>
              <a class="btn waves-effect blue  center" href="{{ url_for('login') }}">Log In</a>
             {% endif %} 
