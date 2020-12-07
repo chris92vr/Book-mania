@@ -19,26 +19,27 @@
                <div class="row col s12 ">
                   <ul class="col s12 ">
                      <li class="content-between">
-                        <h4>Information:</h4>
+                        <p class="information">Information:</p>
                      </li>
                      <li class="content-between">
-                        <h6>Author: {{ book.book_author }}</h6>
+                        <p class="information-content">Author: {{ book.book_author }}</p>
                      </li>
                      <li class="d-flex justify-content-between">
-                        <h6>Publisher:  {{ book.book_publisher }}</h6>
+                        <p class="information-content">Publisher:  {{ book.book_publisher }}</p>
                      </li>
                      <li class="d-flex justify-content-between">
-                        <h6>Category:  {{ book.category_name }}</h6>
+                        <p class="information-content">Category:  {{ book.category_name }}</p>
                      </li>
                      <li class="d-flex justify-content-between">
-                        <h6>Number of Pages: {{ book.number_pages }}</h6>
+                        <p class="information-content">Number of Pages: {{ book.number_pages }}</p>
                      </li>
                      <li class="d-flex justify-content-between">
-                        <h6>Valutation: {{ book.rating }}/100</h6>
+                        <p class="information-content">Valutation: {{ book.rating }}/100</p>
                      </li>
                      <li class="d-flex justify-content-between">
-                        <h6>added by {{ book.created_by }}</h6>
+                        <p class="information-content"><em>added by {{ book.created_by }}</em></p>
                      </li>
+                     <br>
                      <a class="btn halfway-fab blue" target="_blank" href="https://www.amazon.com/s?k={{ book.book_name }}+{{ book.book_author }}+book&ref=nb_sb_noss_1">buy<i  class="material-icons">add_shopping_cart</i></a>
                      {% if session.user == book.created_by %}
                      <br> <br><a class="btn  waves-effect waves-light yellow" href="{{ url_for('edit_book', book_id=book._id) }}">Edit<i  class="material-icons">edit</i></a>
@@ -63,19 +64,19 @@
    <hr>
    <div class="container col-12">
       <div class="row ">
-         <h6>Description</h6>
+        <p class="descript-review-title">Description</p>
       </div>
       <div class="property-description mb-3">
-         <h7>{{ book.book_description }}</h7>
+        <p class="descript-review">{{ book.book_description }}</p>
       </div>
    </div>
    <hr>
    <div class="container col-12">
       <div class="row ">
-         <h6>Review</h6>
+        <p class="descript-review-title">Review</p>
       </div>
       <div class="property-description mb-3">
-         <h7>{{ book.book_review }}</h7>
+         <p class="descript-review">{{ book.book_review }}</p>
       </div>
    </div>
    <hr>

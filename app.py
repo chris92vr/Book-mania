@@ -274,7 +274,7 @@ def update_book(book_id):
 @app.route("/delete_book/<book_id>")
 def delete_book(book_id):
     mongo.db.book.remove({"_id": ObjectId(book_id)})
-    flash("book Successfully Deleted")
+    flash("Book Successfully Deleted")
     return redirect(url_for("index"))
 
 @app.route("/add_comment/<book_id>", methods=["GET", "POST"])
@@ -286,7 +286,7 @@ def add_comment(book_id):
                 'book_id': ObjectId(book_id),
                 "created_by": session["user"]   
         })
-        flash("comment successfully added!")
+        flash("Comment successfully added!")
         return redirect(url_for('browse', book_id=book_id))
 
 
@@ -298,19 +298,17 @@ def add_comment(book_id):
 def delete_comment(comment_id, book_id):
     
     mongo.db.comment.remove({'_id': ObjectId(comment_id)})
-    flash("comment successfully deleted!")
+    flash("Comment successfully deleted!")
     return redirect(url_for('browse', book_id=book_id))
 
-@app.route('/delete_user/<users_id>')
-def delete_user(users_id):
-    mongo.db.users.remove({'_id': ObjectId(users_id)})
-    flash("comment successfully deleted!")
-    return redirect(url_for('register'))
 
 @app.route('/delete_account/')
 def delete_account():
     mongo.db.users.remove({"username": session["user"]})
+    mongo.db.book.remove({"created_by": session["user"]})
+    mongo.db.comment.remove({"created_by": session["user"]})
     session.pop("user")
+    flash("Profile successfully deleted!")
     return redirect(url_for("index"))
 
 if __name__ == "__main__":

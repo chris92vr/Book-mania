@@ -31,7 +31,7 @@ background-image: linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
 
 div.welcome-section {
   margin-top: 60px;
-  background-color: #ffffff;
+  background-color: #ffff;
   border: 1px solid black;
   opacity: 0.8;
   padding-bottom: 20px;
@@ -45,7 +45,7 @@ div.welcome-section h2 p {
   color: #000000;
 }
 #subtitle{
-    color: black;
+    color: #000000;
 }
 .welcome-section{
     padding-top: 30px;
@@ -59,7 +59,33 @@ div.welcome-section h2 p {
     height:48px;
 }
 
+.information{
+    font-size: 3rem;
+}
+.information-content{
+    font-size: 1.4rem;
+}
+.descript-review-title{
+    font-size: 2rem;
+}
+.descript-review{
+    font-size: 1.4rem;
+    letter-spacing: 0.1rem;
+    font-style: oblique;
+}
+.comment{
+    padding-left: 0.6rem;
+    font-size: 1.5rem;
+}
+.comment-title{
+   padding-left: 0.6rem;
+    padding-top: 0.6rem;
 
+    
+}
+.delete{
+    padding-left: 0.6rem;
+}
 
 #arrow-up{
    
