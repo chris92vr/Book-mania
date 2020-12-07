@@ -148,6 +148,13 @@ div.welcome-section h2 p {
   color: #8989bb;
 
 }
+
+.nav-wrapper a{
+  font-size: 1.5rem;
+}
+.nav-wrapper .brand-logo{
+  font-size: 3.5rem;
+}
 /* Styles for the content section */
 
 .content {
@@ -218,12 +225,15 @@ div.welcome-section h2 p {
 
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1097px) {
  nav:before {
     
     height: 140px;
     
 }
+div.welcome-section {
+    margin-top: 10rem;
+  }
 }
 #search{
   min-height: 50px;
