@@ -64,14 +64,14 @@ def myreviews():
 
 @app.route("/browse/<book_id>")
 def browse(book_id):
-    book = mongo.db.book.find_one({
+    book = mongo.db.book.find_one_or_404_or_404({
         '_id': ObjectId(book_id)
     })
     comments = mongo.db.comment.find({
     'book_id': ObjectId(book_id)
     })
     page_title = "View Book"
-    book = mongo.db.book.find_one({'_id': ObjectId(book_id)})
+    book = mongo.db.book.find_one_or_404({'_id': ObjectId(book_id)})
     mongo.db.users.update({"username": session["user"]}, {"$inc": {"review_viewed": 1}})
     return render_template("browse.html", book = book, comments =
     comments, page_title = page_title)
@@ -129,7 +129,7 @@ def register():
     form = LoginForm()
     if form.validate_on_submit():
         # check if username already exists in db
-        existing_user = mongo.db.users.find_one(
+        existing_user = mongo.db.users.find_one_or_404(
             {"username": form.username.data.lower()})
 
         if existing_user:
@@ -156,7 +156,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         # check if username exists in db
-        existing_user = mongo.db.users.find_one(
+        existing_user = mongo.db.users.find_one_or_404(
             {"username": form.username.data.lower()})
 
         if existing_user:
@@ -185,11 +185,11 @@ def login():
 def profile(username):
     # grab the session user's username from db
     page_title="Profile"
-    username = mongo.db.users.find_one(
+    username = mongo.db.users.find_one_or_404(
         {"username": session["user"]})["username"]
     myreview = mongo.db.book.find( {"created_by": session["user"]}).count()
     mycomment =mongo.db.comment.find( {"created_by": session["user"]}).count() 
-    review_viewed= mongo.db.users.find_one({'username': session["user"]})
+    review_viewed= mongo.db.users.find_one_or_404({'username': session["user"]})
     if session["user"]:
         return render_template("profile.html", username=username,page_title=page_title,myreview=myreview,mycomment=mycomment,review_viewed=review_viewed)
 
@@ -201,7 +201,7 @@ def book(book_id):
     
     if session["user"]:
         mongo.db.users.update({"username": session["user"]}, {"$inc": { review_viewed: 1}})
-    book = mongo.db.book.find_one({'_id': ObjectId(book_id)})
+    book = mongo.db.book.find_one_or_404({'_id': ObjectId(book_id)})
     return render_template("book.html", book=book, page_title=page_title)
 
 @app.route("/logout")
@@ -244,7 +244,7 @@ def add_book():
 def edit_book(book_id):
     form = AddBookForm()
     page_title="Edit Book"
-    book = mongo.db.book.find_one({"_id": ObjectId(book_id)})
+    book = mongo.db.book.find_one_or_404({"_id": ObjectId(book_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template('edit_book.html',
      book=book, categories=categories, form=form,page_title=page_title)
@@ -269,7 +269,7 @@ def update_book(book_id):
         mongo.db.book.update({"_id": ObjectId(book_id)}, submit)
         flash("Book Successfully Updated")
 
-    book = mongo.db.book.find_one({"_id": ObjectId(book_id)})
+    book = mongo.db.book.find_one_or_404({"_id": ObjectId(book_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("browse.html", book=book, categories=categories)
 
