@@ -64,7 +64,7 @@ def myreviews():
 
 @app.route("/browse/<book_id>")
 def browse(book_id):
-    book = mongo.db.book.find_one_or_404_or_404({
+    book = mongo.db.book.find_one_or_404({
         '_id': ObjectId(book_id)
     })
     comments = mongo.db.comment.find({
