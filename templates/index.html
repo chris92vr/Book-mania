@@ -29,7 +29,7 @@
        {% if book.cover_image_url %}
  <img class="book-image" src="{{ book.cover_image_url }}">                        {% else %}
                         <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
-                            class="img-fluid details-property-img" alt="Property Image">
+                            class="img-fluid details-property-img" alt="Book Image">
                         {% endif %}
        
         <a class="btn-floating halfway-fab waves-effect waves-light red" href="https://www.amazon.com/s?k={{ book.book_name }}+{{ book.book_author }}+book&ref=nb_sb_noss_1" target=”_blank”><i  class="material-icons">add_shopping_cart</i></a>

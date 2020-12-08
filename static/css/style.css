@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');
-
+.login{
+    color: #8989bb;
+    background-color: white;
+    width: 13rem;
+    text-align: center;
+    margin: 0 auto;
+}
 body{
     font-family: 'Gentium Book Basic', serif;
 }
@@ -16,7 +22,7 @@ nav:before {
 background-image: linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
 }
 main{
-    background: url('../images/library.jpg') no-repeat center center fixed;
+    background: url('../images/library-1.jpg') no-repeat center center fixed;
  background-size: cover;
  padding-top: 20px;
 }
@@ -49,6 +55,12 @@ div.welcome-section h2 p {
 }
 .welcome-section{
     padding-top: 30px;
+}
+.carousel .carousel-item{
+  height: 22rem;
+    cursor: pointer;
+    width: 18rem;
+
 }
 .carousel-item{
   
@@ -231,6 +243,9 @@ div.welcome-section h2 p {
     height: 140px;
     
 }
+.login{
+  margin-top: 5rem;
+}
 div.welcome-section {
     margin-top: 10rem;
   }
@@ -242,9 +257,10 @@ div.welcome-section {
   max-width: 20rem;
 }
 .flash{
-    background-color: whitesmoke;
+    background-color: white;
+    width: fit-content;
+    padding: 0.3rem;
 }
-
 #num_pages{
     font-size: 2rem;
     letter-spacing: 2rem;

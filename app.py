@@ -29,7 +29,8 @@ def index():
 
 @app.route("/listing")
 def listing():
-    books = mongo.db.book.find().sort("_id", -1)# Pagination
+    books = mongo.db.book.find().sort("_id", -1)
+    # Pagination
     books_pagination = books.count()
     books_per_page = 6
     current_page = int(request.args.get("current_page", 1))
@@ -49,6 +50,7 @@ def myreviews():
     books = mongo.db.book.find({
         'created_by': username
     }).sort("_id", -1)
+    n_books = mongo.db.book.find({'created_by': username}).count()
     # Pagination
     books_pagination = books.count()
     books_per_page = 6
@@ -58,7 +60,7 @@ def myreviews():
     )
     books = books.skip((current_page - 1) * books_per_page).limit(
         books_per_page)
-    return render_template("listing.html", books = books, current_page = current_page, pages = num_pages, page_title = page_title)
+    return render_template("listing_copy.html", books = books, current_page = current_page, pages = num_pages, page_title = page_title,n_books=n_books)
 
 @app.route("/browse/<book_id>")
 def browse(book_id):
