@@ -210,7 +210,15 @@ div.welcome-section h2 p {
     padding: 25px 25px 25px 25px;
     margin-bottom: 2rem;
 }
-
+.no-books{
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.568);
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.16), 0 8px 15px rgba(0, 0, 0, 0.23);
+    background-color: #fff;
+    padding: 25px 25px 25px 25px;
+    margin-bottom: 7rem;
+}
 .book-image-box{
     width: 100%;
 }
@@ -269,6 +277,7 @@ div.welcome-section {
     width: -moz-fit-content;
     padding: 0.3rem;
     border: 1px solid;
+    width: fit-content;
    
 }
 #num_pages{

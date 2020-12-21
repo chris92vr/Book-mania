@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="title">
-   <h3 class="center login">Book Reviews</h3>
+   <h3 class="center login">My Reviews</h3>
    <br>
    <br>
 </div>
 <div class="row">
- {% if book.cover_image_url %}
+    {% if n_books == 0 %}
+    <div class="container center-align no-books">
+    <h4 class="center">no books added!</h4>
+    <a id="center" class="btn waves-effect blue  center" href="{{ url_for('add_book') }}">Add Book</a>
+    </div>
+    {% else %}
    {% for book in books %}
    <div class="col s12 m6">
       <div class="card horizontal small">
          <div class="card-image">
             {% if book.cover_image_url %}
-            <img class="book-image" src="{{ book.cover_image_url }}">                        {% else %}
+            <img class="book-image" src="{{ book.cover_image_url }}">                        
+            {% else %}
             <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
                class="img-fluid" alt="Book Image">
             {% endif %}
@@ -41,6 +47,7 @@
       </div>
    </div>
    {% endfor %}
+   {% endif %}
 </div>
 <div class="row mt-4 mb-3">
    <div class="col-sm-12">

@@ -60,7 +60,7 @@ def myreviews():
     )
     books = books.skip((current_page - 1) * books_per_page).limit(
         books_per_page)
-    return render_template("listing_copy.html", books = books, current_page = current_page, pages = num_pages, page_title = page_title,n_books=n_books)
+    return render_template("my_reviews.html", books = books, current_page = current_page, pages = num_pages, page_title = page_title,n_books=n_books)
 
 @app.route("/browse/<book_id>")
 def browse(book_id):
