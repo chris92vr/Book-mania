@@ -69,6 +69,23 @@ div.welcome-section h2 p {
     cursor: pointer;
      
 }
+.carousel .indicators .indicator-item {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  height: 8px;
+  width: 8px;
+  margin: 24px 4px;
+  background-color: #000000;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  border-radius: 50%;
+}
+
+.carousel .indicators .indicator-item.active {
+  background-color:#8989bb;
+}
+
 .card-image{
     height:48px;
 }
