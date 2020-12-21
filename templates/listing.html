@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="title">
-   <h2 class="center login">Book Reviews</h2>
+   <h3 class="center login">Book Reviews</h3>
    <hr>
+   <br>
+   <br>
 </div>
 <div class="row">
    {% for book in books %}
@@ -29,7 +31,7 @@
             </div>
             <div class="card-action">
                 {% if session.user %}
-               <a class="blue-text"href="{{ url_for('browse', book_id=book._id) }}">View Book</a>
+               <a class="blue-text" href="{{ url_for('browse', book_id=book._id) }}">View Book</a>
                {% else %}
                 <a  href="{{ url_for('register') }}">Register</a>or &nbsp;&nbsp;&nbsp;
              <a href="{{ url_for('login') }}">Log In</a>for view review

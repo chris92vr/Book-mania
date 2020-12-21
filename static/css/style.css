@@ -2,12 +2,13 @@
 .login{
     color: #8989bb;
     background-color: white;
-    width: 13rem;
+
     text-align: center;
     margin: 0 auto;
 }
 body{
     font-family: 'Gentium Book Basic', serif;
+
 }
 nav:before {
     content: '';
@@ -21,9 +22,9 @@ nav:before {
     background-color: #8989bb;
 background-image: linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
 }
+
 main{
-    background: url('../images/library-1.jpg') no-repeat center center fixed;
- background-size: cover;
+ 
  padding-top: 20px;
 }
 footer{
@@ -33,13 +34,14 @@ background-image: linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
 
 .white{
     padding: 0.5rem;
+     border: 1px solid black;
+    margin-top: -0.7rem;
 }
 
 div.welcome-section {
-  margin-top: 60px;
-  background-color: #ffff;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
   border: 1px solid black;
-  opacity: 0.8;
   padding-bottom: 20px;
   padding-top: 0px;
  
@@ -206,6 +208,7 @@ div.welcome-section h2 p {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.16), 0 8px 15px rgba(0, 0, 0, 0.23);
     background-color: #fff;
     padding: 25px 25px 25px 25px;
+    margin-bottom: 2rem;
 }
 
 .book-image-box{
@@ -249,7 +252,12 @@ div.welcome-section h2 p {
 div.welcome-section {
     margin-top: 10rem;
   }
+  #introduction{
+    margin-top: 10rem;
 }
+ 
+}
+
 #search{
   min-height: 50px;
 }
@@ -258,12 +266,27 @@ div.welcome-section {
 }
 .flash{
     background-color: white;
-    width: fit-content;
+    width: -moz-fit-content;
     padding: 0.3rem;
+    border: 1px solid;
+   
 }
 #num_pages{
     font-size: 2rem;
     letter-spacing: 2rem;
     padding-left: 1rem;
     background-color: white;
+}
+#no-comments{
+    font-size: 1.4rem;
+    color: #8989bb;
+}
+.add-book{
+    margin-bottom: 15rem;
+    margin-top: 5rem;
+}
+.profile{
+    margin-bottom: 15rem;
+    padding-bottom: 15rem;
+    margin-top: 5rem;
 }

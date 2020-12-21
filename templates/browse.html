@@ -13,6 +13,21 @@
             <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
                class="img-fluid" alt="Book Image">
             {% endif %}
+             <a class="btn halfway-fab blue" target="_blank" href="https://www.amazon.com/s?k={{ book.book_name }}+{{ book.book_author }}+book&ref=nb_sb_noss_1">buy<i  class="material-icons">add_shopping_cart</i></a>&nbsp;&nbsp;&nbsp;
+                     {% if session.user == book.created_by %}
+                    <a class="btn  waves-effect waves-light yellow" href="{{ url_for('edit_book', book_id=book._id) }}">Edit<i  class="material-icons">edit</i></a>&nbsp;&nbsp;&nbsp;
+                    <a class="btn  waves-effect waves-light red modal-trigger" href="#delete_book">Delete<i  class="material-icons">delete</i></a>
+                     <div id="delete_book" class="modal">
+                        <div class="modal-content">
+                           <h4>Delete book </h4>
+                           <p>{{ session.user }}, are you sure to would delete {{ book.book_name }} from our book collection?</p>
+                        </div>
+                        <div class="modal-footer">
+                           <a href="#!" class="modal-close waves-effect waves-green btn-flat">exit</a>
+                           <a href="{{ url_for('delete_book', book_id=book._id) }}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
+                        </div>
+                     </div>
+                     {% endif %} 
          </div>
          <div class="col m5">
             <div class="col s12">
@@ -40,21 +55,6 @@
                         <p class="information-content"><em>added by {{ book.created_by }}</em></p>
                      </li>
                      <br>
-                     <a class="btn halfway-fab blue" target="_blank" href="https://www.amazon.com/s?k={{ book.book_name }}+{{ book.book_author }}+book&ref=nb_sb_noss_1">buy<i  class="material-icons">add_shopping_cart</i></a>
-                     {% if session.user == book.created_by %}
-                     <br> <br><a class="btn  waves-effect waves-light yellow" href="{{ url_for('edit_book', book_id=book._id) }}">Edit<i  class="material-icons">edit</i></a>
-                     <br> <a class="btn  waves-effect waves-light red modal-trigger" href="#delete_book">Delete<i  class="material-icons">delete</i></a>
-                     <div id="delete_book" class="modal">
-                        <div class="modal-content">
-                           <h4>Delete book </h4>
-                           <p>{{ session.user }}, are you sure to would delete {{ book.book_name }} from our book collection?</p>
-                        </div>
-                        <div class="modal-footer">
-                           <a href="#!" class="modal-close waves-effect waves-green btn-flat">exit</a>
-                           <a href="{{ url_for('delete_book', book_id=book._id) }}" class="modal-close waves-effect waves-green btn-flat">Delete</a>
-                        </div>
-                     </div>
-                     {% endif %} 
                   </ul>
                </div>
             </div>
@@ -80,8 +80,9 @@
       </div>
    </div>
    <hr>
-   {% include 'sections/comments.html' %} 
+  
    {% include 'sections/comment.html' %} 
+    {% include 'sections/comments.html' %} 
 </section>
 <a id="button"><i id="arrow-up" class="fas fa-arrow-circle-up"></i></a>
 {% endblock %}

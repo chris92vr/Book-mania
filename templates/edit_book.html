@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 <h3 class="login text-darken-4 center-align">Edit book</h3>
-<div class="row card-panel grey lighten-5">
-   <form class="col s12" method="POST" action="{{ url_for('update_book', book_id=book._id) }}">
+<div class="row add-book card-panel grey lighten-5">
+   <form class=" col s12" method="POST" action="{{ url_for('update_book', book_id=book._id) }}">
       <!-- book name -->
       <div class="row">
          <div class="input-field col s6">

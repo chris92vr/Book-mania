@@ -129,7 +129,7 @@ def register():
     form = LoginForm()
     if form.validate_on_submit():
         # check if username already exists in db
-        existing_user = mongo.db.users.find_one_or_404(
+        existing_user = mongo.db.users.find_one(
             {"username": form.username.data.lower()})
 
         if existing_user:
@@ -146,7 +146,7 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = form.username.data.lower()
         flash("Registration Successful!")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("profile"))
 
     return render_template("register.html", form=form, page_title=page_title)
 
@@ -181,16 +181,16 @@ def login():
     return render_template("login.html", form=form,page_title=page_title)
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/profile/", methods=["GET", "POST"])
+def profile():
     # grab the session user's username from db
-    page_title="Profile"
-    username = mongo.db.users.find_one_or_404(
-        {"username": session["user"]})["username"]
-    myreview = mongo.db.book.find( {"created_by": session["user"]}).count()
-    mycomment =mongo.db.comment.find( {"created_by": session["user"]}).count() 
-    review_viewed= mongo.db.users.find_one_or_404({'username': session["user"]})
-    if session["user"]:
+    if "user" in session:    
+        page_title="Profile"
+        username = mongo.db.users.find_one_or_404(
+            {"username": session["user"]})["username"]
+        myreview = mongo.db.book.find( {"created_by": session["user"]}).count()
+        mycomment =mongo.db.comment.find( {"created_by": session["user"]}).count() 
+        review_viewed= mongo.db.users.find_one_or_404({'username': session["user"]})
         return render_template("profile.html", username=username,page_title=page_title,myreview=myreview,mycomment=mycomment,review_viewed=review_viewed)
 
     return redirect(url_for("login"))

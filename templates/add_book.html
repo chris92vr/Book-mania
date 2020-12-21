@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h3 class="login text-darken-4 center-align">Add book</h3>
+<h3 class="login text-darken-4 center-align">Add Book</h3>
 {% from "_render_field_2.html" import render_field_2, render_textarea_field %}
-<div class="row card-panel grey lighten-5">
-   <form class="col s12" method="POST" action="{{ url_for('add_book') }}">
+<div class="row add-book card-panel grey lighten-5">
+   <form class=" col s12" method="POST" action="{{ url_for('add_book') }}">
       <!-- book name -->
       {{ form.csrf_token }}
       <div class="row">
@@ -39,7 +39,7 @@
                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
                {% endfor %}
             </select>
-            <label for="category_name">book Category</label>
+            <label for="category_name">Book Category</label>
          </div>
          <!-- cover image -->
          <div class="row">
@@ -65,7 +65,7 @@
                <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>&nbsp;&nbsp;
                &nbsp;&nbsp;&nbsp;
                &nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;publication date:
+               &nbsp;&nbsp;Publication Date:
                <input id="publication_date" name="publication_date" type="date"  required>
                <label for="publication_date"></label>
             </div>
@@ -73,7 +73,7 @@
                <i class="fas fa-star  prefix light-blue-text text-darken-4"></i>&nbsp;&nbsp;
                &nbsp;&nbsp;&nbsp;
                &nbsp;&nbsp;&nbsp;
-               &nbsp;&nbsp;valutation:
+               &nbsp;&nbsp;Valutation:
                <p class="range-field">
                   <label for="test5">enter the rating from 0 to 100</label>
                   <input name="rating" type="range" id="test5" min="0" max="100" required/>
