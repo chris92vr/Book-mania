@@ -19,7 +19,7 @@
    
 </div>
 
-    <div class="welcome-section center">
+    <div class="welcome-section center white">
    <h2 id="subtitle" class="center ">Our last book reviews:</h2>
 </div>
 
@@ -35,11 +35,11 @@
         <a class="btn-floating halfway-fab waves-effect waves-light red" href="https://www.amazon.com/s?k={{ book.book_name }}+{{ book.book_author }}+book&ref=nb_sb_noss_1" target=”_blank”><i  class="material-icons">add_shopping_cart</i></a>
          <div class="white">
         
-             <strong>Name:</strong>
+             <b>Name:</b>
             <span>{{ book.book_name }}</span><br>
-            <strong>Author:</strong>
+            <b>Author:</b>
             <span>{{ book.book_author }}</span><br>
-            <strong>Category:</strong>
+            <b>Category:</b>
             <span>{{ book.category_name }}</span><br>
             {% if session.user %}
              <a href="{{ url_for('browse', book_id=book._id) }}">View Book</a>

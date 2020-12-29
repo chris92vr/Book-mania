@@ -34,22 +34,22 @@
                <div class="row col s12 ">
                   <ul class="col s12 ">
                      <li class="content-between">
-                        <p class="information">Information:</p>
+                        <p class="information ">Information:</p>
                      </li>
                      <li class="content-between">
-                        <p class="information-content">Author: {{ book.book_author }}</p>
+                        <p class="information-content"><b>Author:</b> {{ book.book_author }}</p>
                      </li>
                      <li class="d-flex justify-content-between">
-                        <p class="information-content">Publisher:  {{ book.book_publisher }}</p>
+                        <p class="information-content"><b>Publisher:</b>  {{ book.book_publisher }}</p>
                      </li>
                      <li class="d-flex justify-content-between">
-                        <p class="information-content">Category:  {{ book.category_name }}</p>
+                        <p class="information-content"><b>Category:</b>  {{ book.category_name }}</p>
                      </li>
                      <li class="d-flex justify-content-between">
-                        <p class="information-content">Number of Pages: {{ book.number_pages }}</p>
+                        <p class="information-content"><b>Number of Pages:</b> {{ book.number_pages }}</p>
                      </li>
                      <li class="d-flex justify-content-between">
-                        <p class="information-content">Valutation: {{ book.rating }}/100</p>
+                        <p class="information-content"><b>Valutation:</b> {{ book.rating }}/100</p>
                      </li>
                      <li class="d-flex justify-content-between">
                         <p class="information-content"><em>added by {{ book.created_by }}</em></p>
@@ -67,7 +67,7 @@
         <p class="descript-review-title">Description</p>
       </div>
       <div class="property-description mb-3">
-        <p class="descript-review">{{ book.book_description }}</p>
+        <p class="descript-review ">{{ book.book_description }}</p>
       </div>
    </div>
    <hr>

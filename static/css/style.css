@@ -1,14 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');
-.login{
-    color: #8989bb;
-    background-color: white;
-
-    text-align: center;
-    margin: 0 auto;
-}
 body{
     font-family: 'Gentium Book Basic', serif;
-
+    background-color: #f1f1fd;
 }
 nav:before {
     content: '';
@@ -25,7 +18,7 @@ background-image: linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
 
 main{
  
- padding-top: 20px;
+ padding-top: 60px;
 }
 footer{
     background-color: #8989bb;
@@ -54,6 +47,7 @@ div.welcome-section h2 p {
 }
 #subtitle{
     color: #000000;
+   
 }
 .welcome-section{
     padding-top: 30px;
@@ -186,38 +180,7 @@ div.welcome-section h2 p {
 .nav-wrapper .brand-logo{
   font-size: 3.5rem;
 }
-/* Styles for the content section */
 
-.content {
-  width: 77%;
-  margin: 50px auto;
- 
-  font-size: 17px;
-  color: #6c767a;
-  line-height: 1.9;
-}
-@media (min-width: 500px) {
-  .content {
-    width: 43%;
-  }
-  #button {
-    margin: 30px;
-  }
-}
-.content h1 {
-  margin-bottom: -10px;
-  color: #03a9f4;
-  line-height: 1.5;
-}
-.content h3 {
-  font-style: italic;
-  color: #96a2a7;
-}
-
-.property-image-box{
-    
-    background-size: contain;
-}
 .book-container{
     border-radius: 15px;
     border: 1px solid rgba(0, 0, 0, 0.568);
@@ -310,6 +273,7 @@ div.welcome-section {
 .add-book{
     margin-bottom: 15rem;
     margin-top: 5rem;
+    
 }
 .profile{
     margin-bottom: 15rem;

@@ -1,4 +1,6 @@
-import os, math, env
+import os
+import math
+import env 
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -17,18 +19,25 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app)
 
-
-
-
 @app.route("/")
 def index():
+    """ Returns the home page """
+    
+    # initializes page title
     page_title = "Home"
+    # determines last 5 books books added 
     books = mongo.db.book.find().sort("_id", -1).limit(5)
+    # renders the home page
     return render_template("index.html", books = books, page_title =
     page_title)
 
 @app.route("/listing")
 def listing():
+    """ Returns the the added books """
+    
+    # initializes page title
+    page_title = "Our Book Review"
+    # determines books books added in descending order
     books = mongo.db.book.find().sort("_id", -1)
     # Pagination
     books_pagination = books.count()
@@ -38,15 +47,20 @@ def listing():
     1, int(math.ceil(books_pagination / books_per_page)) + 1
     )
     books = books.skip((current_page - 1) * books_per_page).limit(books_per_page)
-    page_title = "Our Book Review"
+    # renders the the page with the added books
     return render_template("listing.html", books = books,
     current_page = current_page,
     pages = num_pages, page_title = page_title)
 
 @app.route("/myreviews")
 def myreviews():
+    """ Returns the page with the books added by the logged in user profile """
+    
+    # initializes page title
     page_title = "My Reviews"
+    # logged in user
     username = session["user"]
+    #determines books added by the logged in user
     books = mongo.db.book.find({
         'created_by': username
     }).sort("_id", -1)
@@ -60,26 +74,36 @@ def myreviews():
     )
     books = books.skip((current_page - 1) * books_per_page).limit(
         books_per_page)
+    # renders the the page with the books added by the logged in user
     return render_template("my_reviews.html", books = books, current_page = current_page, pages = num_pages, page_title = page_title,n_books=n_books)
 
 @app.route("/browse/<book_id>")
 def browse(book_id):
+    """ Returns the page of a book  """
+
     book = mongo.db.book.find_one_or_404({
         '_id': ObjectId(book_id)
     })
     comments = mongo.db.comment.find({
     'book_id': ObjectId(book_id)
     })
+    # initializes page title
     page_title = "View Book"
     book = mongo.db.book.find_one_or_404({'_id': ObjectId(book_id)})
+    #increment books counter displayed by the connected user profile
     mongo.db.users.update({"username": session["user"]}, {"$inc": {"review_viewed": 1}})
+    # renders the the page of corresponding book
     return render_template("browse.html", book = book, comments =
     comments, page_title = page_title)
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
+    """ Search books by name and author  """
+
+    # initializes page title
     page_title="Search book"
     search_input = request.form.get("search")
+    #convert search input to string
     search_string = str(search_input)
     books = mongo.db.book.find().sort("_id", -1)
      # Pagination
@@ -92,7 +116,6 @@ def search():
     books = books.skip((current_page - 1) * books_per_page).limit(
         books_per_page
     ) 
-
     # Previous index on all fields removed to narrow down the results
     # mongo.db.reviews.drop_index([('$**', 'text')])
     mongo.db.book.create_index([('book_author', 'text'), 
@@ -119,12 +142,14 @@ def search():
         else:
             flash(f'Result for "{search_input}". We found {results_count} items')
             search_results
-                    
+    # renders the the page with the search result                
     return render_template('listing.html', books=search_results, current_page=current_page,page_title=page_title)
-
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """ Returns a form for user registration  """
+
+    # initializes page title
     page_title ="Register"
     form = LoginForm()
     if form.validate_on_submit():
@@ -152,6 +177,9 @@ def register():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    """ Returns a form for for user login  """
+
+    # initializes page title
     page_title="Log in"
     form = LoginForm()
     if form.validate_on_submit():
@@ -177,35 +205,33 @@ def login():
             # username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("login"))
-
     return render_template("login.html", form=form,page_title=page_title)
 
 
 @app.route("/profile/", methods=["GET", "POST"])
 def profile():
+    """ Returns the user profile page  """
+
     # grab the session user's username from db
-    if "user" in session:    
+    if "user" in session:
+        # initializes page title    
         page_title="Profile"
         username = mongo.db.users.find_one_or_404(
             {"username": session["user"]})["username"]
+        #reviews created by the current user
         myreview = mongo.db.book.find( {"created_by": session["user"]}).count()
-        mycomment =mongo.db.comment.find( {"created_by": session["user"]}).count() 
+        #comments created by the current user
+        mycomment =mongo.db.comment.find( {"created_by": session["user"]}).count()
+        #count of reviews viewed by the current user 
         review_viewed= mongo.db.users.find_one_or_404({'username': session["user"]})
+        # renders the the page of the user profile
         return render_template("profile.html", username=username,page_title=page_title,myreview=myreview,mycomment=mycomment,review_viewed=review_viewed)
-
     return redirect(url_for("login"))
-
-@app.route("/book/<book_id>", methods=["GET", "POST"])
-def book(book_id):
-    page_title = "View Book"
-    
-    if session["user"]:
-        mongo.db.users.update({"username": session["user"]}, {"$inc": { review_viewed: 1}})
-    book = mongo.db.book.find_one_or_404({'_id': ObjectId(book_id)})
-    return render_template("book.html", book=book, page_title=page_title)
 
 @app.route("/logout")
 def logout():
+    """ log out current user profile  """
+
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
@@ -214,11 +240,12 @@ def logout():
 
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
+    """ returns form for add a book  """
+
     form = AddBookForm()
+    # initializes page title
     page_title = "Add a Book"   
     if form.validate_on_submit():
-       
-        
         book = {
             "category_name": request.form.get("category_name"),
             "book_name": form.name.data,
@@ -230,27 +257,31 @@ def add_book():
             "book_author": form.author.data,
             "book_publisher": form.publisher.data,
             "rating": request.form.get("rating"),
-
             "created_by": session["user"]
         }
         mongo.db.book.insert_one(book)
         flash("Book successfully added!")
         return redirect(url_for("index"))
-
     categories = mongo.db.categories.find().sort("category_name", 1)
+    # renders the the page of the form for add a book
     return render_template("add_book.html", categories=categories, form=form,page_title=page_title)
 
 @app.route('/edit_book/<book_id>')
 def edit_book(book_id):
+    """ Returns a form for edit a book  """
+
     form = AddBookForm()
+    # initializes page title
     page_title="Edit Book"
     book = mongo.db.book.find_one_or_404({"_id": ObjectId(book_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
+     # renders the the page of the form for edit a book
     return render_template('edit_book.html',
      book=book, categories=categories, form=form,page_title=page_title)
  
 @app.route("/update_book/<book_id>", methods=["GET", "POST"])
 def update_book(book_id):
+    """ Inserts book changes updates  """
 
     if request.method == "POST":
         submit = {
@@ -268,22 +299,27 @@ def update_book(book_id):
         }
         mongo.db.book.update({"_id": ObjectId(book_id)}, submit)
         flash("Book Successfully Updated")
-
     book = mongo.db.book.find_one_or_404({"_id": ObjectId(book_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("browse.html", book=book, categories=categories)
 
 @app.route("/delete_book/<book_id>")
 def delete_book(book_id):
+    """ Delete a book  """
+    #remove book from database
     mongo.db.book.remove({"_id": ObjectId(book_id)})
+    #remove comments of the book
     mongo.db.comment.remove({"_id": ObjectId(book_id)})
     flash("Book Successfully Deleted")
-    return redirect(url_for("index"))
+    return redirect(url_for("listing"))
 
 @app.route("/add_comment/<book_id>", methods=["GET", "POST"])
 def add_comment(book_id):
+    """ Add a comment to a book review  """
+
     if request.method == "POST":
         comment = mongo.db.comment
+        #insert comment
         comment.insert_one({
                 "comment": request.form.get("comment"),
                 'book_id': ObjectId(book_id),
@@ -292,24 +328,25 @@ def add_comment(book_id):
         flash("Comment successfully added!")
         return redirect(url_for('browse', book_id=book_id))
 
-
-
-# DELETE COMMENT
-# Function that deletes the comment
-
 @app.route('/delete_comment/<comment_id>/<book_id>')
 def delete_comment(comment_id, book_id):
+    """ Delete a comment  """
     
     mongo.db.comment.remove({'_id': ObjectId(comment_id)})
     flash("Comment successfully deleted!")
     return redirect(url_for('browse', book_id=book_id))
 
-
 @app.route('/delete_account/')
 def delete_account():
+    """ Delete a user profile """
+
+    #remove current user profile from database
     mongo.db.users.remove({"username": session["user"]})
+    #remove books created by current user
     mongo.db.book.remove({"created_by": session["user"]})
+    #remove comments created by current user
     mongo.db.comment.remove({"created_by": session["user"]})
+    # remove user from session cookie
     session.pop("user")
     flash("Profile successfully deleted!")
     return redirect(url_for("index"))
