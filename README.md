@@ -247,7 +247,7 @@ In order to to check the validity of the website code, I have used the following
 All the features were tested manually throughout the application development process. Table below outlines all features and tests performed on them, as well as all resolved and remaining bugs associated with tested features.
 
 
-Category |Test Description | Expected Outcome | Pass/Fail
+Category | Description | Expected Outcome | Pass/Fail
 | ---| ---|:-----------------------------------------:| :---: | 
 |Buttons (including anchor links)| Register| Register page| pass
 || Login | Login page| pass
@@ -271,19 +271,6 @@ Category |Test Description | Expected Outcome | Pass/Fail
 Several tests were carried out to verify the correct functioning of the project with positive results.
 The functionality of the site is optimal. Browser compatibility is verified for Firefox, Chrome, Edge and Opera on Windows 10 home; Firefox, Chrome on Ubuntu 19.10 and Firefox, Chrome on Android 10. The responsiveness of the pages is suitable on desktop screens, tablets and mobile phones.
 In the folder [project-documentation/testing](), there are screenshots named in the following format: (screen resolution) - Operating system (browser) - screen description.
-
-#### Bugs:
-
-No bugs left unresolved.
-
-### Peer-code-review
-
-The project was published on Code Institute Slack code-peer-review channel where other students and mentors are able to review the code and provide their feedback. No additional comments were provided.
-
-#### Bugs:
-
-No bugs as no feedback was provided.
-
 
 
 ## Deployment
@@ -348,7 +335,7 @@ To deploy my project I followed these steps:
 
 ### Content
 
-Reviews, book information and comments are based on two main sources, namely [Wikipedia](https://en.wikipedia.org/wiki/Main_Page) and [Goodreads](https://www.goodreads.com/).
+
 
 ### Media
 
