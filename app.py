@@ -12,13 +12,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
-PORT = '27017'
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.config['PORT'] = PORT
 app.secret_key = os.environ.get("SECRET_KEY")
 
-PORT = '27017'
 
 
 mongo = PyMongo(app)
