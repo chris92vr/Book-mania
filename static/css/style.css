@@ -296,3 +296,11 @@ div.welcome-section {
    border-bottom: 1px solid #8989bb !important;
    box-shadow: 0 1px 0 0 #8989bb !important
  }
+
+ .input-field input[type=text]:focus, .input-field input[type=password]:focus, .input-field input[type=date]:focus, select:focus, option:focus{
+   border-bottom: 1px solid #8989bb !important;
+   box-shadow: 0 1px 0 0 #8989bb !important
+ }
+ ul.dropdown-content.select-dropdown li span {
+    color: #8989bb  /* no need for !important :) */
+}
