@@ -126,17 +126,14 @@ def search():
         {"$text": {"$search": search_string}})
     if request.method == 'POST':
         if results_count == 0:
-            flash(f'No matching results found for "{search_input}".
-                  Please try a different search or
-                  browse through our collection', 'info')
+            flash(f'No matching results found for "{search_input}". Please try a different search or browse through our collection', 'info')
             return redirect('/listing')
         # Display search result
         elif results_count == 1:
             flash(f'Result for "{search_input}". We found one item')
             search_results
         else:
-            flash(f'Result for "{search_input}".
-                  We found {results_count} items')
+            flash(f'Result for "{search_input}". We found {results_count} items')
             search_results
     # renders the the page with the search result
     return render_template('listing.html', books=search_results,
