@@ -8,7 +8,7 @@
       <div class="row">
          <div class="col m7 book-image-box">
             {% if book.cover_image_url %}
-            <img class="book-image" src="{{ book.cover_image_url }}">                        {% else %}
+            <img class="book-image" src="{{ book.cover_image_url }}" alt="{{ book.book_name }}">                        {% else %}
             <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
                class="img-fluid" alt="Book Image">
             {% endif %}
