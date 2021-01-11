@@ -1,5 +1,6 @@
 import os
 import math
+import env
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -40,8 +41,8 @@ def listing():
     current_page = int(request.args.get("current_page", 1))
     num_pages = range(
         1, int(math.ceil(books_pagination/books_per_page))+1)
-    books = books.skip((current_page - 1) * books_per_page).limit
-    (books_per_page)
+    books = books.skip((current_page - 1) * 
+                       books_per_page).limit(books_per_page)
     # renders the the page with the added books
     return render_template("listing.html", books=books,
                            current_page=current_page,
@@ -70,7 +71,7 @@ def myreviews():
     books = books.skip((current_page - 1) * books_per_page).limit(
         books_per_page)
     # renders the the page with the books added by the logged in user
-    return render_template("my_reviews.html", books=books,
+    return render_template("my_reviews.html", books=books, 
                            current_page=current_page,
                            pages=num_pages, page_title=page_title,
                            n_books=n_books)
