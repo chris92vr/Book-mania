@@ -1,306 +1,315 @@
+/* ---------------------------- Import font */
+
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');
-body{
-    font-family: 'Gentium Book Basic', serif;
-    background-color: #f1f1fd;
-}
+
+/* ---------------------------- nav section */
+
 nav:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background-color: #8989bb;
-background-image: linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
+	background-color: #8989bb;
+	background-image: linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
 }
 
-main{
- 
- padding-top: 65px;
-}
-footer{
-    background-color: #8989bb;
-background-image: linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
+.sidenav li a {
+	font-size: 2rem;
+	padding: 3.5rem;
+	color: #8989bb;
 }
 
-.white{
-    padding: 0.5rem;
-     border: 1px solid black;
-    margin-top: -0.7rem;
+.nav-wrapper a {
+	font-size: 1.5rem;
 }
 
-div.welcome-section {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  border: 1px solid black;
-  padding-bottom: 20px;
-  padding-top: 0px;
- 
+.nav-wrapper .brand-logo {
+	font-size: 3.5rem;
 }
 
-div.welcome-section h2 p {
-  margin: 5%;
-  font-weight: bold;
-  color: #000000;
-}
-#subtitle{
-    color: #000000;
-   
-}
-.welcome-section{
-    padding-top: 30px;
-}
-.carousel .carousel-item{
-  height: 22rem;
-    cursor: pointer;
-    width: 18rem;
 
+/* ---------------------------- main section */
+
+body {
+	font-family: 'Gentium Book Basic', serif;
+	background-color: #f1f1fd;
 }
-.carousel-item{
-  
-    cursor: pointer;
-     
+
+main {
+	padding-top: 65px;
 }
+
+.white {
+	padding: 0.5rem;
+	border: 1px solid black;
+	margin-top: -0.7rem;
+}
+
+.carousel .carousel-item {
+	height: 22rem;
+	cursor: pointer;
+	width: 18rem;
+}
+
+.carousel-item {
+	cursor: pointer;
+}
+
 .carousel .indicators .indicator-item {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  height: 8px;
-  width: 8px;
-  margin: 24px 4px;
-  background-color: #000000;
-  -webkit-transition: background-color .3s;
-  transition: background-color .3s;
-  border-radius: 50%;
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	height: 8px;
+	width: 8px;
+	margin: 24px 4px;
+	background-color: #000000;
+	-webkit-transition: background-color .3s;
+	transition: background-color .3s;
+	border-radius: 50%;
 }
 
 .carousel .indicators .indicator-item.active {
-  background-color:#8989bb;
+	background-color: #8989bb;
 }
 
-.card-image{
-    height:48px;
-}
-.card-content{
-    margin-top: -2rem;
+.card-image {
+	height: 48px;
 }
 
-.information{
-    font-size: 1.9rem;
-}
-.information-content{
-    font-size: 1.4rem;
-}
-.descript-review-title{
-    font-size: 2rem;
-}
-.descript-review{
-    font-size: 1.4rem;
-    letter-spacing: 0.1rem;
-    font-style: oblique;
-}
-.comment{
-    padding-left: 0.6rem;
-    font-size: 1.5rem;
-}
-.comment-title{
-   padding-left: 0.6rem;
-    padding-top: 0.6rem;
-
-    
-}
-.delete{
-    padding-left: 0.6rem;
+.card-content {
+	margin-top: -2rem;
 }
 
-#arrow-up{
-   
-    text-shadow: 1px 1px 1px #ccc; 
-    font-size: 5.5em;
+.information {
+	font-size: 1.9rem;
+}
+
+.information-content {
+	font-size: 1.4rem;
+}
+
+.descript-review-title {
+	font-size: 2rem;
+}
+
+.descript-review {
+	font-size: 1.4rem;
+	letter-spacing: 0.1rem;
+	font-style: oblique;
+}
+
+.comment {
+	padding-left: 0.6rem;
+	font-size: 1.5rem;
+}
+
+.comment-title {
+	padding-left: 0.6rem;
+	padding-top: 0.6rem;
+}
+
+.delete {
+	padding-left: 0.6rem;
+}
+
+#arrow-up {
+	text-shadow: 1px 1px 1px #ccc;
+	font-size: 5.5em;
 }
 
 #button {
-  display: inline-block;
-  
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  border-radius: 4px;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  transition: background-color .3s, 
-    opacity .5s, visibility .5s;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 1000;
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	border-radius: 4px;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	transition: background-color .3s, opacity .5s, visibility .5s;
+	opacity: 0;
+	visibility: hidden;
+	z-index: 1000;
 }
+
 #button::after {
-  
- 
-  font-weight: normal;
-  font-style: normal;
-  font-size: 2em;
-  line-height: 50px;
-  color: #fff;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 2em;
+	line-height: 50px;
+	color: #fff;
 }
+
 #arrow-up:hover {
-  cursor: pointer;
-  background-color: #333;
+	cursor: pointer;
+	background-color: #333;
 }
+
 #arrow-up:active {
-  background-color: #555;
+	background-color: #555;
 }
+
 #button.show {
-  opacity: 1;
-  visibility: visible;
+	opacity: 1;
+	visibility: visible;
 }
 
-
-.statistic{
-  margin-top: 2rem;
-  padding:1rem;
-  font-size:1.5rem;
-  padding-top: 3.1rem;
-    border: 1px solid black;
-}
-.profile-buttons{
-     margin-top: 2rem;
+.statistic {
+	margin-top: 2rem;
+	padding: 1rem;
+	font-size: 1.5rem;
+	padding-top: 3.1rem;
+	border: 1px solid black;
 }
 
-.sidenav li a{
-  font-size: 2rem; 
-  padding: 3.5rem;
-  color: #8989bb;
-
+.profile-buttons {
+	margin-top: 2rem;
 }
 
-.nav-wrapper a{
-  font-size: 1.5rem;
-}
-.nav-wrapper .brand-logo{
-  font-size: 3.5rem;
+.book-container {
+	border-radius: 15px;
+	border: 1px solid rgba(0, 0, 0, 0.568);
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.16), 0 8px 15px rgba(0, 0, 0, 0.23);
+	background-color: #fff;
+	padding: 25px 25px 25px 25px;
+	margin-bottom: 2rem;
 }
 
-.book-container{
-    border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.568);
-    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.16), 0 8px 15px rgba(0, 0, 0, 0.23);
-    background-color: #fff;
-    padding: 25px 25px 25px 25px;
-    margin-bottom: 2rem;
+.no-books {
+	border-radius: 15px;
+	border: 1px solid rgba(0, 0, 0, 0.568);
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.16), 0 8px 15px rgba(0, 0, 0, 0.23);
+	background-color: #fff;
+	padding: 25px 25px 25px 25px;
+	margin-bottom: 7rem;
 }
-.no-books{
-    border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.568);
-    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.16), 0 8px 15px rgba(0, 0, 0, 0.23);
-    background-color: #fff;
-    padding: 25px 25px 25px 25px;
-    margin-bottom: 7rem;
+
+.book-image-box {
+	width: 100%;
 }
-.book-image-box{
-    width: 100%;
+
+.book-image {
+	width: 100%;
+	height: 100%;
 }
-.book-image{
-    width: 100%;
-    height: 100%;
-}
+
 .card-img {
-    width: 100%;
-    height: 300px;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    border-bottom: 1px solid rgb(0, 0, 0);
-    border-radius: 15px 15px 0 0;
+	width: 100%;
+	height: 300px;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	border-bottom: 1px solid rgb(0, 0, 0);
+	border-radius: 15px 15px 0 0;
 }
-.fa-github{
-    font-size: 1.5em;
+
+.fa-github {
+	font-size: 1.5em;
 }
 
 .carousel {
-    height: 550px;
-    perspective: 800px;
-    margin-top: -200px;
-  padding-bottom: 800px;
-
-
+	height: 550px;
+	perspective: 800px;
+	margin-top: -200px;
+	padding-bottom: 800px;
 }
+
+#search {
+	min-height: 50px;
+}
+
+#test5 {
+	max-width: 20rem;
+}
+
+.flash {
+	background-color: white;
+	width: -moz-fit-content;
+	padding: 0.3rem;
+	border: 1px solid;
+	width: fit-content;
+}
+
+#num_pages {
+	font-size: 2rem;
+	letter-spacing: 2rem;
+	padding-left: 1rem;
+}
+
+#no-comments {
+	font-size: 1.4rem;
+	color: #8989bb;
+}
+
+.add-book {
+	margin-bottom: 15rem;
+	margin-top: 5rem;
+}
+
+.profile {
+	margin-bottom: 15rem;
+	padding-bottom: 15rem;
+	margin-top: 5rem;
+}
+
+.login-form {
+	margin-top: 5rem;
+	margin-bottom: 30rem;
+}
+
+
+/* label underline focus color */
+
+.input-field input[type=text]:focus,
+.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid #8989bb !important;
+	box-shadow: 0 1px 0 0 #8989bb !important
+}
+
+.input-field input[type=text]:focus,
+.input-field input[type=password]:focus,
+.input-field input[type=date]:focus,
+select:focus,
+option:focus {
+	border-bottom: 1px solid #8989bb !important;
+	box-shadow: 0 1px 0 0 #8989bb !important
+}
+
+ul.dropdown-content.select-dropdown li span {
+	color: #8989bb/* no need for !important :) */
+}
+
+
+/* ---------------------------- footer section */
+
+footer {
+	background-color: #8989bb;
+	background-image: linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
+}
+
+
+/* ---------------------------- responsiveness function*/
 
 @media (max-width: 1097px) {
- nav:before {
-    
-    height: 140px;
-    
-}
-.login{
-  margin-top: 5rem;
-}
-div.welcome-section {
-    margin-top: 10rem;
-  }
-  #introduction{
-    margin-top: 10rem;
-}
-.book-container{
-    
-    margin-top: 7rem;
-}
- 
-}
-
-#search{
-  min-height: 50px;
-}
-#test5{
-  max-width: 20rem;
-}
-.flash{
-    background-color: white;
-    width: -moz-fit-content;
-    padding: 0.3rem;
-    border: 1px solid;
-    width: fit-content;
-   
-}
-#num_pages{
-    font-size: 2rem;
-    letter-spacing: 2rem;
-    padding-left: 1rem;
-}
-#no-comments{
-    font-size: 1.4rem;
-    color: #8989bb;
-}
-.add-book{
-    margin-bottom: 15rem;
-    margin-top: 5rem;
-    
-}
-.profile{
-    margin-bottom: 15rem;
-    padding-bottom: 15rem;
-    margin-top: 5rem;
-}
-.login-form{
-    margin-top: 5rem;
-    margin-bottom: 30rem;
-}
- 
- /* label underline focus color */
- .input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
-   border-bottom: 1px solid #8989bb !important;
-   box-shadow: 0 1px 0 0 #8989bb !important
- }
-
- .input-field input[type=text]:focus, .input-field input[type=password]:focus, .input-field input[type=date]:focus, select:focus, option:focus{
-   border-bottom: 1px solid #8989bb !important;
-   box-shadow: 0 1px 0 0 #8989bb !important
- }
- ul.dropdown-content.select-dropdown li span {
-    color: #8989bb  /* no need for !important :) */
+	nav:before {
+		height: 140px;
+	}
+	.login {
+		margin-top: 5rem;
+	}
+	div.welcome-section {
+		margin-top: 10rem;
+	}
+	#introduction {
+		margin-top: 10rem;
+	}
+	.book-container {
+		margin-top: 7rem;
+	}
 }
