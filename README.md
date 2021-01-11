@@ -239,7 +239,8 @@ Relationships between collections are as follows:
 In order to to check the validity of the website code, I have used the following:
 
     - HTML Validation: https://validator.w3.org/ - no errors identified.
-    - CSS Validation: https://jigsaw.w3.org/css-validator/ - Identified issues with bootstrap not with my project. 
+    - CSS Validation: https://jigsaw.w3.org/css-validator/ - Identified issues with materializecss not with my project.
+    - PYTHON Validation: https://pep8online.com/ no errors identified.
 
 
 ### Functionality Test
