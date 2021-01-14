@@ -16,7 +16,9 @@ nav:before {
 	background-color: #8989bb;
 	background-image: linear-gradient(315deg, #8989bb 0%, #a5a4cb 74%);
 }
-
+#welcome-section {
+		margin-top: 7rem;
+	}
 .sidenav li a {
 	font-size: 2rem;
 	padding: 3.5rem;
@@ -46,7 +48,7 @@ main {
 .white {
 	padding: 0.5rem;
 	border: 1px solid black;
-	margin-top: -0.7rem;
+	
 }
 
 .carousel .carousel-item {
@@ -303,7 +305,7 @@ footer {
 	.login {
 		margin-top: 5rem;
 	}
-	div.welcome-section {
+	#welcome-section {
 		margin-top: 10rem;
 	}
 	#introduction {
