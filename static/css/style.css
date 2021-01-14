@@ -235,7 +235,9 @@ main {
 	width: -moz-fit-content;
 	padding: 0.3rem;
 	border: 1px solid;
-	width: fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #num_pages {

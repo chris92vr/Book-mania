@@ -19,8 +19,8 @@
    
 </div>
 
-    <div class="welcome-section center white">
-   <h2 id="subtitle" class="center ">Our last book reviews:</h2>
+    <div id="welcome-section" class="center white">
+   <h2 class="center ">Our last book reviews:</h2>
 </div>
 
    <div class="carousel">
@@ -32,7 +32,8 @@
                             class="img-fluid details-property-img" alt="Book Image">
                         {% endif %}
        
-        <a class="btn-floating halfway-fab waves-effect waves-light red" href="https://www.amazon.com/s?k={{ book.book_name }}+{{ book.book_author }}+book&ref=nb_sb_noss_1" target=”_blank”><i  class="material-icons">add_shopping_cart</i></a>
+        <a class="btn-floating halfway-fab waves-effect waves-light red" href="https://www.amazon.com/s?k={% autoescape false %}
+{{ book.book_name|replace(' ', '+') }}+{{ book.book_author|replace(' ', '+')}}{% endautoescape %}+book&ref=nb_sb_noss_1"><i  class="material-icons">add_shopping_cart</i></a>
          <div class="white">
         
              <b>Name:</b>
