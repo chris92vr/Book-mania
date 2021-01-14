@@ -40,7 +40,7 @@ def listing():
     current_page = int(request.args.get("current_page", 1))
     num_pages = range(
         1, int(math.ceil(books_pagination/books_per_page))+1)
-    books = books.skip((current_page - 1) * 
+    books = books.skip((current_page - 1) *
                        books_per_page).limit(books_per_page)
     # renders the the page with the added books
     return render_template("listing.html", books=books,
@@ -70,7 +70,7 @@ def myreviews():
     books = books.skip((current_page - 1) * books_per_page).limit(
         books_per_page)
     # renders the the page with the books added by the logged in user
-    return render_template("my_reviews.html", books=books, 
+    return render_template("my_reviews.html", books=books,
                            current_page=current_page,
                            pages=num_pages, page_title=page_title,
                            n_books=n_books)
@@ -87,7 +87,6 @@ def browse(book_id):
     })
     # initializes page title
     page_title = "View Book"
-    book = mongo.db.book.find_one_or_404({'_id': ObjectId(book_id)})
     # increment books counter displayed by the connected user profile
     mongo.db.users.update({"username": session["user"]},
                           {"$inc": {"review_viewed": 1}})
@@ -126,14 +125,17 @@ def search():
         {"$text": {"$search": search_string}})
     if request.method == 'POST':
         if results_count == 0:
-            flash(f'No matching results found for "{search_input}". Please try a different search or browse through our collection', 'info')
+            flash(f"""No matching results found for "{search_input}".Please try a
+                  different search or browse through our collection',
+                  'info""")
             return redirect('/listing')
         # Display search result
         elif results_count == 1:
             flash(f'Result for "{search_input}". We found one item')
             search_results
         else:
-            flash(f'Result for "{search_input}". We found {results_count} items')
+            flash(f"""Result for "{search_input}".
+                  We found {results_count} items""")
             search_results
     # renders the the page with the search result
     return render_template('listing.html', books=search_results,
