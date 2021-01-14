@@ -31,9 +31,9 @@
                         <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
                             class="img-fluid details-property-img" alt="Book Image">
                         {% endif %}
-       
-        <a class="btn-floating halfway-fab waves-effect waves-light red" href="https://www.amazon.com/s?k={% autoescape false %}
-{{ book.book_name|replace(' ', '+') }}+{{ book.book_author|replace(' ', '+')}}{% endautoescape %}+book&ref=nb_sb_noss_1"><i  class="material-icons">add_shopping_cart</i></a>
+       {% autoescape false %}
+        <a class="btn-floating halfway-fab waves-effect waves-light red" href="https://www.amazon.com/s?k={{ book.book_name|replace(' ', '+') }}+{{ book.book_author|replace(' ', '+')}}+book&ref=nb_sb_noss_1"><i  class="material-icons">add_shopping_cart</i></a>
+        {% endautoescape %}
          <div class="white">
         
              <b>Name:</b>
