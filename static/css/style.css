@@ -46,11 +46,14 @@ main {
 .white {
 	padding: 0.5rem;
 	border: 1px solid black;
-	
+}
+
+#descr-carousel {
+	margin-top: -0.7rem;
 }
 
 div#welcome-section {
-        margin-top: 7rem;
+	margin-top: 7rem;
 }
 
 .carousel .carousel-item {
@@ -167,7 +170,6 @@ div#welcome-section {
 	padding: 1rem;
 	font-size: 1.5rem;
 	padding-top: 3.1rem;
-	border: 1px solid black;
 }
 
 .profile-buttons {
@@ -235,11 +237,12 @@ div#welcome-section {
 .flash {
 	background-color: white;
 	width: -moz-fit-content;
-	padding: 0.3rem;
+	padding: 0.5rem;
 	border: 1px solid;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 1.6rem;
 }
 
 #num_pages {
@@ -306,8 +309,8 @@ footer {
 	nav:before {
 		height: 140px;
 	}
-	.login {
-		margin-top: 5rem;
+	.title {
+		margin-top: 3rem;
 	}
 	#welcome-section {
 		margin-top: 10rem;
@@ -317,5 +320,8 @@ footer {
 	}
 	.book-container {
 		margin-top: 7rem;
+	}
+	.flash {
+		margin-top: 4rem;
 	}
 }
