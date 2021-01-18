@@ -46,29 +46,29 @@ A live demo is available [here](https://bookmania1.herokuapp.com/ "bookmania").
 
 ### Users stories
 
-**User Story 5:** As a user I would like to be able to add my own book reviews and share them with other users.
+- As a user I would like to be able to add my own book reviews and share them with other users.
 
-**User Story 1:** As a user I would like to create an account to access reviews available in the app.
+- As a user I would like to create an account to access reviews available in the app
 
-**User Story 2:** As a user I would like to be able to delete my account and all content added by me at any point.
+- As a user I would like to be able to delete my account and all content added by me at any point.
 
-**User Story 3:** As a user I would like to have an option to login and logout of my account so nobody else can access it.
+- As a user I would like to have an option to login and logout of my account so nobody else can access it.
 
-**User Story 4:** As a user I would like to explore different books.
+- As a user I would like to explore different books.
 
-**User Story 6:** As a user I would like to be able to go back to any review added by me and edit information about it.
+- As a user I would like to be able to go back to any review added by me and edit information about it.
 
-**User Story 7:** As a user I would like to be able to delete any content added by me (i.e. reviews, comments).
+- As a user I would like to be able to delete any content added by me (i.e. reviews, comments).
 
-**User Story 13:** As a user I would like to see all collection of reviews in an organised, easy to navigate way.
+- As a user I would like to see all collection of reviews in an organised, easy to navigate way.
 
-**User Story 9:** As a user I would like to be able to interact with other users and share opinions by comment about various books.
+- As a user I would like to be able to interact with other users and share opinions by comment about various books.
 
-**User Story 10:** As a user I would like to see all of my inputs within the app (i.e. comments, reviews, rating) in case I would like to edit or delete them.
+- As a user I would like to see all of my inputs within the app (i.e. comments, reviews, rating) in case I would like to edit or delete them.
 
-**User Story 11:** As a user I would like to search any particular book using book title or author.
+- As a user I would like to search any particular book using book title or author.
 
-**User Story 12:** As a user I would like to be sure that no other user is able to edit or delete my input.
+- As a user I would like to be sure that no other user is able to edit or delete my input.
 
 
 ### Design and colors
@@ -250,14 +250,14 @@ All the features were tested manually throughout the application development pro
 
 Category | Description | Expected Outcome | Pass/Fail
 | ---| ---|:-----------------------------------------:| :---: | 
-|Buttons (including anchor links)| Register| Register page| pass
-|| Login | Login page| pass
-|| All Reviews | All reviews added | pass
-|| Add Book| Add Book page| pass
+|Buttons (including anchor links)| Register| The browser navigates to the Register page| pass
+|| Login | The browser navigates to the Login page| pass
+|| All Reviews |The browser navigates to the All reviews added | pass
+|| Add Book| The browser navigates to the Add Book page| pass
 || Buy book | generate Amazon link of the book in a new tab | pass
-| | Edit Book |Edit Book page | pass
+| | Edit Book | The browser navigates to the Edit Book page | pass
 | | Delete Book| Delete the book after confirming | pass
-| | View Review | Book Review page | pass
+| | View Review | The browser navigates to the Book Review page | pass
 |Forms| Register | Input fields must be validated and not empty. the data entered is correctly saved in the database with the encrypted password field | pass
 | | Login | A user can login only wit the right username and password | pass
 | | Add book | Input fields must be validated and not empty. the data entered is correctly saved in the database | pass
@@ -336,11 +336,9 @@ To deploy my project I followed these steps:
 
 ### Content
 
+- **Flask-WTF**, introduction to Flask-WTF from youtube channel [Pretty Printed](https://www.youtube.com/watch?v=vzaXBm-ZVOQ)
 
-
-### Media
-
-  
+- **Replace a string with linebreaks in Jinja2**, [Link](https://stackoverflow.com/questions/41006119/how-to-replace-a-string-with-linebreaks-in-jinja2)
 
 ## Author
 
