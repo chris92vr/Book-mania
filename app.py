@@ -51,29 +51,32 @@ def listing():
 @app.route("/myreviews")
 def myreviews():
     """ Returns the page with the books added by the logged in user profile """
-    # initializes page title
-    page_title = "My Reviews"
-    # logged in user
-    username = session["user"]
-    # determines books added by the logged in user
-    books = mongo.db.book.find({
-        'created_by': username
-    }).sort("_id", -1)
-    n_books = mongo.db.book.find({'created_by': username}).count()
-    # Pagination
-    books_pagination = books.count()
-    books_per_page = 6
-    current_page = int(request.args.get("current_page", 1))
-    num_pages = range(
-        1, int(math.ceil(books_pagination / books_per_page)) + 1
-    )
-    books = books.skip((current_page - 1) * books_per_page).limit(
-        books_per_page)
-    # renders the the page with the books added by the logged in user
-    return render_template("my_reviews.html", books=books,
-                           current_page=current_page,
-                           pages=num_pages, page_title=page_title,
-                           n_books=n_books)
+    # grab the session user's username from db
+    if "user" in session:
+        # initializes page title
+        page_title = "My Reviews"
+        # logged in user
+        username = session["user"]
+        # determines books added by the logged in user
+        books = mongo.db.book.find({
+            'created_by': username
+        }).sort("_id", -1)
+        n_books = mongo.db.book.find({'created_by': username}).count()
+        # Pagination
+        books_pagination = books.count()
+        books_per_page = 6
+        current_page = int(request.args.get("current_page", 1))
+        num_pages = range(
+            1, int(math.ceil(books_pagination / books_per_page)) + 1
+        )
+        books = books.skip((current_page - 1) * books_per_page).limit(
+            books_per_page)
+        # renders the the page with the books added by the logged in user
+        return render_template("my_reviews.html", books=books,
+                               current_page=current_page,
+                               pages=num_pages, page_title=page_title,
+                               n_books=n_books)
+    return redirect(url_for("login"))
 
 
 @app.route("/browse/<book_id>")
@@ -139,6 +142,7 @@ def search():
             search_results
     # renders the the page with the search result
     return render_template('listing.html', books=search_results,
+                           pages=num_pages,
                            current_page=current_page, page_title=page_title)
 
 
@@ -235,30 +239,33 @@ def logout():
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     """ returns form for add a book  """
-    form = AddBookForm()
-    # initializes page title
-    page_title = "Add a Book"
-    if form.validate_on_submit():
-        book = {
-            "category_name": request.form.get("category_name"),
-            "book_name": form.name.data,
-            "book_description": form.bookdescription.data,
-            "publication_date": request.form.get("publication_date"),
-            "cover_image_url": form.coverimageurl.data,
-            "number_pages": form.npages.data,
-            "book_review": form.bookreview.data,
-            "book_author": form.author.data,
-            "book_publisher": form.publisher.data,
-            "rating": request.form.get("rating"),
-            "created_by": session["user"]
-        }
-        mongo.db.book.insert_one(book)
-        flash("Book successfully added!")
-        return redirect(url_for("index"))
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    # renders the the page of the form for add a book
-    return render_template("add_book.html", categories=categories,
-                           form=form, page_title=page_title)
+    # grab the session user's username from db
+    if "user" in session:
+        form = AddBookForm()
+        # initializes page title
+        page_title = "Add a Book"
+        if form.validate_on_submit():
+            book = {
+                "category_name": request.form.get("category_name"),
+                "book_name": form.name.data,
+                "book_description": form.bookdescription.data,
+                "publication_date": request.form.get("publication_date"),
+                "cover_image_url": form.coverimageurl.data,
+                "number_pages": form.npages.data,
+                "book_review": form.bookreview.data,
+                "book_author": form.author.data,
+                "book_publisher": form.publisher.data,
+                "rating": request.form.get("rating"),
+                "created_by": session["user"]
+            }
+            mongo.db.book.insert_one(book)
+            flash("Book successfully added!")
+            return redirect(url_for("index"))
+        categories = mongo.db.categories.find().sort("category_name", 1)
+        # renders the the page of the form for add a book
+        return render_template("add_book.html", categories=categories,
+                               form=form, page_title=page_title)
+    return redirect(url_for("login"))
 
 
 @app.route('/edit_book/<book_id>')
