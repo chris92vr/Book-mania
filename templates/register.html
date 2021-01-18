@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="title">
 <h3 class="center-align">Register</h3>
+</div>
 {% from "_render_field.html" import render_field %}
 <div class="row">
    <form class="login-form col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="title">
 <h3 class="login text-darken-4 center-align">Edit book</h3>
+</div>
 <div class="row add-book card-panel yellow lighten-5">
    <form class=" col s12" method="POST" action="{{ url_for('update_book', book_id=book._id) }}">
       <!-- book name -->
