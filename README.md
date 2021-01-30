@@ -2,7 +2,7 @@
 
 Stream Three Project: Data Centric Development - Milestone Project
 
-![alt text]( "Gif")
+![alt text](https://github.com/chris92vr/book-mania/blob/master/project-documentation/images/bookmania.jpg "bookmania")
 
 
 Project consists of the following sections:
@@ -101,7 +101,7 @@ The main purpose is to bring book lovers together in a virtual community where i
 
 ### Wireframes
 
-The following [wireframe]()  were created to design the project layout options for large, medium and mobile displays.
+The following [wireframe](https://github.com/chris92vr/book-mania/tree/master/project-documentation/wireframes)  were created to design the project layout options for large, medium and mobile displays.
 
 
 ## Database
@@ -118,7 +118,7 @@ Book collection contains information about each book, person who added it and vo
 
 Picture below presents the database schema outlining structure of each collection and relationship between each collection.
 
-![alt text]( "database-schema")
+![alt text](https://github.com/chris92vr/book-mania/blob/master/project-documentation/images/bookmaniadb.png "database-schema")
 
 Relationships between collections are as follows:
 
