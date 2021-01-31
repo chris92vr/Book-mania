@@ -56,6 +56,8 @@ A live demo is available [here](https://bookmania1.herokuapp.com/ "bookmania").
 
 - As a user I would like to explore different books.
 
+- As a user I would like to be able to go back to the top of the page.
+
 - As a user I would like to be able to go back to any review added by me and edit information about it.
 
 - As a user I would like to be able to delete any content added by me (i.e. reviews, comments).
@@ -69,6 +71,8 @@ A live demo is available [here](https://bookmania1.herokuapp.com/ "bookmania").
 - As a user I would like to search any particular book using book title or author.
 
 - As a user I would like to be sure that no other user is able to edit or delete my input.
+
+
 
 
 ### Design and colors
@@ -258,6 +262,7 @@ Category | Description | Expected Outcome | Pass/Fail
 | | Edit Book | The browser navigates to the Edit Book page | pass
 | | Delete Book| Delete the book after confirming | pass
 | | View Review | The browser navigates to the Book Review page | pass
+| | Back to the Top (Arrow up icon)) | The browser goes back to the top of the page | pass
 |Forms| Register | Input fields must be validated and not empty. the data entered is correctly saved in the database with the encrypted password field | pass
 | | Login | A user can login only wit the right username and password | pass
 | | Add book | Input fields must be validated and not empty. the data entered is correctly saved in the database | pass
