@@ -188,7 +188,7 @@ def login():
                     existing_user["password"], form.Password.data):
                     session["user"] = form.Username.data.lower()
                     flash("Welcome, {}".format(
-                          request.form.get("username")))
+                          request.form.get("Username")))
                     return redirect(url_for(
                             "profile", username=session["user"]))
             else:
