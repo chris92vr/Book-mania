@@ -16,12 +16,12 @@ class LoginForm(FlaskForm):
 class AddBookForm(FlaskForm):
     name = StringField('Name', validators=[InputRequired("""A book name is req
                        uired!"""), Length(min=3, max=25, message="""Must be
-                       between 3 and 35 characters.""")])
+                       between 3 and 40 characters.""")])
     author = StringField('Author', validators=[InputRequired("""A author is
                          required!"""), Length(min=3, max=25, message="""
                          Must be between 3 and 30 characters.""")])
     publisher = StringField('Publisher', validators=[InputRequired("""A
-                            publisher is required!"""), Length(min=4, max=20,
+                            publisher is required!"""), Length(min=4, max=30,
                             message="Must be between 4 and 20 characters.")])
     npages = IntegerField('Number of Pages',  validators=[InputRequired("""
                           Number of pages is required!"""), NumberRange(min=1,
