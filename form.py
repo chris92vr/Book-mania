@@ -4,10 +4,10 @@ from wtforms.validators import InputRequired, Length, NumberRange, URL
 
 
 class LoginForm(FlaskForm):
-    username = StringField('username', validators=[InputRequired("""A username
+    Username = StringField('username', validators=[InputRequired("""A username
                            is required!"""), Length(min=5, max=10,
                            message='Must be between 5 and 10 characters.')])
-    password = PasswordField('password', validators=[InputRequired("""Passwo
+    Password = PasswordField('password', validators=[InputRequired("""Passwo
                              rd is required!"""), Length(min=5, max=10,
                              message="""Must be between 5 and 10 charac
                              ters.""")])
@@ -20,7 +20,7 @@ class AddBookForm(FlaskForm):
     author = StringField('Author', validators=[InputRequired("""A author is
                          required!"""), Length(min=3, max=25, message="""
                          Must be between 3 and 25 characters.""")])
-    publisher = StringField('Publisher', validators=[InputRequired("""A 
+    publisher = StringField('Publisher', validators=[InputRequired("""A
                             publisher is required!"""), Length(min=4, max=20,
                             message="Must be between 4 and 20 characters.")])
     npages = IntegerField('Number of Pages',  validators=[InputRequired("""

@@ -155,18 +155,18 @@ def register():
     if form.validate_on_submit():
         # check if username already exists in db
         existing_user = mongo.db.users.find_one(
-            {"username": form.username.data.lower()})
+            {"username": form.Username.data.lower()})
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("register"))
         register = {
-            "username": form.username.data.lower(),
-            "password": generate_password_hash(form.password.data),
+            "username": form.Username.data.lower(),
+            "password": generate_password_hash(form.Password.data),
             "review_viewed": 0
         }
         mongo.db.users.insert_one(register)
         # put the new user into 'session' cookie
-        session["user"] = form.username.data.lower()
+        session["user"] = form.Username.data.lower()
         flash("Registration Successful!")
         return redirect(url_for("profile"))
     return render_template("register.html", form=form, page_title=page_title)
@@ -181,12 +181,12 @@ def login():
     if form.validate_on_submit():
         # check if username exists in db
         existing_user = mongo.db.users.find_one_or_404(
-            {"username": form.username.data.lower()})
+            {"username": form.Username.data.lower()})
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], form.password.data):
-                    session["user"] = form.username.data.lower()
+                    session["user"] = form.Username.data.lower()
                     flash("Welcome, {}".format(
                           request.form.get("username")))
                     return redirect(url_for(
