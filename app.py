@@ -1,5 +1,6 @@
 import os
 import math
+import env
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -106,17 +107,6 @@ def search():
     search_input = request.form.get("search")
     # convert search input to string
     search_string = str(search_input)
-    books = mongo.db.book.find().sort("_id", -1)
-    # Pagination
-    books_pagination = books.count()
-    books_per_page = 6
-    current_page = int(request.args.get("current_page", 1))
-    num_pages = range(
-        1, int(math.ceil(books_pagination / books_per_page)) + 1
-    )
-    books = books.skip((current_page - 1) * books_per_page).limit(
-        books_per_page
-    )
     # Previous index on all fields removed to narrow down the results
     # mongo.db.reviews.drop_index([('$**', 'text')])
     mongo.db.book.create_index([('book_author', 'text'),
@@ -129,8 +119,7 @@ def search():
     if request.method == 'POST':
         if results_count == 0:
             flash(f"""No matching results found for "{search_input}".Please try a
-                  different search or browse through our collection',
-                  'info""")
+                  different search or browse through our collection""")
             return redirect('/listing')
         # Display search result
         elif results_count == 1:
@@ -140,8 +129,20 @@ def search():
             flash(f"""Result for "{search_input}".
                   We found {results_count} items""")
             search_results
+    # determines books books added in descending order
+    books = mongo.db.book.find().sort("_id", -1)
+    # Pagination
+    books_pagination = results_count
+    books_per_page = 6
+    current_page = int(request.args.get("current_page", 1))
+    num_pages = range(
+        1, int(math.ceil(books_pagination / books_per_page)) + 1
+    )
+    books = books.skip((current_page - 1) * books_per_page).limit(
+        books_per_page
+    )
     # renders the the page with the search result
-    return render_template('listing.html', books=search_results,
+    return render_template('my_search_result.html', books=search_results,
                            pages=num_pages,
                            current_page=current_page, page_title=page_title)
 
