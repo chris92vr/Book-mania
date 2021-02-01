@@ -1,8 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, IntegerField, TextAreaField
 from wtforms.validators import InputRequired, Length, NumberRange, URL
-from wtforms.validators import DataRequired
-from wtforms.fields.html5 import DateField
 
 
 class LoginForm(FlaskForm):
@@ -42,9 +40,4 @@ class AddBookForm(FlaskForm):
                                bookreview is required!"""), Length(min=3,
                                max=3500, message='''Must be between 3
                                and 3500 characters.''')])
-    publication_date = DateField('Publication Date',
-                                 validators=[DataRequired(message="""
-                                                          You need to enter the
-                                                          publication
-                                                          date.""")],
-                                 format='%d-%m-%Y')
+   
