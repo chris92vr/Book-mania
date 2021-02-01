@@ -63,13 +63,12 @@
          </div>
          <!-- due date picker -->
          <div class="row">
-            <div class="input-field col s6">
+             <div class="input-field col s6">
                <i class="fas fa-calendar-alt prefix light-blue-text text-darken-4"></i>&nbsp;&nbsp;
                &nbsp;&nbsp;&nbsp;
                &nbsp;&nbsp;&nbsp;
                &nbsp;&nbsp;Publication Date:
-               <input id="publication_date" name="publication_date" type="date"  required>
-               <label for="publication_date"></label>
+               {{ render_textarea_field(form.publication_date, placeholder=form.publication_date.label.text) }}
             </div>
             <div class="col s6 input-field">
                <i class="fas fa-star  prefix light-blue-text text-darken-4"></i>&nbsp;&nbsp;

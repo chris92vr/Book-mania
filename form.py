@@ -1,6 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, IntegerField, TextAreaField
 from wtforms.validators import InputRequired, Length, NumberRange, URL
+from wtforms.validators import DataRequired
+from wtforms.fields.html5 import DateField
 
 
 class LoginForm(FlaskForm):
@@ -28,11 +30,21 @@ class AddBookForm(FlaskForm):
                           max=20000, message='Must be between 1 and 20000.')])
     coverimageurl = StringField('Cover Image Url', validators=[URL(message="""
                                 Must be a valid URL.""")])
-    bookdescription = TextAreaField('Book Description', validators=
-                                   [InputRequired("""A coverimageurl is required
-                                   !"""), Length(min=3,
-                                    max=3500, message="""Must be between 3 and 3
-                                    500 characters.""")])
+    bookdescription = TextAreaField('Book Description',
+                                    validators=[InputRequired("""A
+                                    coverimageurl is
+                                    required!"""), Length(min=3,
+                                                          max=3500,
+                                                          message="""Must be
+                                                          between 3 and 3500
+                                                          characters.""")])
     bookreview = TextAreaField('Book Review', validators=[InputRequired("""A
                                bookreview is required!"""), Length(min=3,
-                               max=3500, message='Must be between 3 and 3500 characters.')])
+                               max=3500, message='''Must be between 3
+                               and 3500 characters.''')])
+    publication_date = DateField('Publication Date',
+                                 validators=[DataRequired(message="""
+                                                          You need to enter the
+                                                          publication
+                                                          date.""")],
+                                 format='%d-%m-%Y')

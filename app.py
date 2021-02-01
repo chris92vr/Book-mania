@@ -250,7 +250,7 @@ def add_book():
                 "category_name": request.form.get("category_name"),
                 "book_name": form.name.data,
                 "book_description": form.bookdescription.data,
-                "publication_date": request.form.get("publication_date"),
+                "publication_date": form.publication_date.data,
                 "cover_image_url": form.coverimageurl.data,
                 "number_pages": form.npages.data,
                 "book_review": form.bookreview.data,
