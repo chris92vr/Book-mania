@@ -227,7 +227,8 @@ div#welcome-section {
 }
 
 #search {
-	min-height: 50px;
+    min-height: 50px;
+    margin-top: 0.22rem;
 }
 
 #test5 {
@@ -323,5 +324,9 @@ footer {
 	}
 	.flash {
 		margin-top: 4rem;
-	}
+    }
+    #search {
+    margin-top: -0.4rem;
+}
+
 }
