@@ -40,4 +40,3 @@ class AddBookForm(FlaskForm):
                                bookreview is required!"""), Length(min=3,
                                max=3500, message='''Must be between 3
                                and 3500 characters.''')])
-   
