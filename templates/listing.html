@@ -29,11 +29,11 @@
                <span>{{ book.number_pages }}</span><br>
             </div>
             <div class="card-action">
-                {% if session.user %}
+               {% if session.user %}
                <a class="blue-text" href="{{ url_for('browse', book_id=book._id) }}">View Book</a>
                {% else %}
-                <a class="blue-text" href="{{ url_for('register') }}">Register</a>or &nbsp;&nbsp;&nbsp;
-             <a class="blue-text" href="{{ url_for('login') }}">Log In</a>for view review
+               <a class="blue-text" href="{{ url_for('register') }}">Register</a>or &nbsp;&nbsp;&nbsp;
+               <a class="blue-text" href="{{ url_for('login') }}">Log In</a>for view review
                {% endif %} 
             </div>
          </div>

@@ -2,7 +2,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="title">
-<h3 class="center-align">Log In</h3>
+   <h3 class="center-align">Log In</h3>
 </div>
 {% from "_render_field.html" import render_field %}
 <div class="row">
@@ -31,15 +31,13 @@
          </div>
       </div>
       <div class="row">
-   <div class="col s12">
-      <p class="center-align login">
-         New Here?
-         <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Register Account</a>
-      </p>
-   </div>
-</div>
+         <div class="col s12">
+            <p class="center-align login">
+               New Here?
+               <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Register Account</a>
+            </p>
+         </div>
+      </div>
    </form>
 </div>
-
 {% endblock %}
-

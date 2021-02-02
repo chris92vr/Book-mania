@@ -1,53 +1,44 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <!-- Homepage welcome section -->
 <div id="introduction" class=" center">
-
-          
    <h1>Welcome to Bookmania</h1>
    <h3>Online community for book lovers</h3>
-   
-    {% if session.user %}
-    <a class="btn waves-effect blue  center" href="{{ url_for('add_book') }}">Add Book</a>
-    <a class="btn waves-effect blue  center" href="{{ url_for('listing') }}">All Reviews</a>
-    {% else %}
-    <h3 class="red-text"><u>Register or log in to access our reviews</u><br></h3>
-             <a class="btn waves-effect blue  center" href="{{ url_for('register') }}">Register</a>
-             <a class="btn waves-effect blue  center" href="{{ url_for('login') }}">Log In</a>
-            {% endif %} 
-   
+   {% if session.user %}
+   <a class="btn waves-effect blue  center" href="{{ url_for('add_book') }}">Add Book</a>
+   <a class="btn waves-effect blue  center" href="{{ url_for('listing') }}">All Reviews</a>
+   {% else %}
+   <h3 class="red-text"><u>Register or log in to access our reviews</u><br></h3>
+   <a class="btn waves-effect blue  center" href="{{ url_for('register') }}">Register</a>
+   <a class="btn waves-effect blue  center" href="{{ url_for('login') }}">Log In</a>
+   {% endif %} 
 </div>
-
-    <div id="welcome-section" class="center white">
+<div id="welcome-section" class="center white">
    <h2 class="center ">Our last book reviews:</h2>
 </div>
-
-   <div class="carousel">
+<div class="carousel">
    {% for book in books %}
-      <div class="carousel-item">
-       {% if book.cover_image_url %}
- <img class="book-image" src="{{ book.cover_image_url }}" alt="{{ book.book_name }}">                        {% else %}
-                        <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
-                            class="img-fluid details-property-img" alt="Book Image">
-                        {% endif %}
-       {% autoescape false %}
-        <a class="btn-floating halfway-fab waves-effect waves-light red" href="https://www.amazon.com/s?k={{ book.book_name|replace(' ', '+') }}+{{ book.book_author|replace(' ', '+')}}+book&ref=nb_sb_noss_1"><i  class="material-icons">add_shopping_cart</i></a>
-        {% endautoescape %}
-         <div id="descr-carousel" class="white">
-        
-             <b>Name:</b>
-            <span>{{ book.book_name }}</span><br>
-            <b>Author:</b>
-            <span>{{ book.book_author }}</span><br>
-            <b>Category:</b>
-            <span>{{ book.category_name }}</span><br>
-            {% if session.user %}
-             <a href="{{ url_for('browse', book_id=book._id) }}">View Book</a>
-             {% endif %} 
-         </div>
+   <div class="carousel-item">
+      {% if book.cover_image_url %}
+      <img class="book-image" src="{{ book.cover_image_url }}" alt="{{ book.book_name }}">                        {% else %}
+      <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
+         class="img-fluid details-property-img" alt="Book Image">
+      {% endif %}
+      {% autoescape false %}
+      <a class="btn-floating halfway-fab waves-effect waves-light red" target="_blank" href="https://www.amazon.com/s?k={{ book.book_name|replace(' ', '+') }}+{{ book.book_author|replace(' ', '+')}}+book&ref=nb_sb_noss_1"><i  class="material-icons">add_shopping_cart</i></a>
+      {% endautoescape %}
+      <div id="descr-carousel" class="white">
+         <b>Name:</b>
+         <span>{{ book.book_name }}</span><br>
+         <b>Author:</b>
+         <span>{{ book.book_author }}</span><br>
+         <b>Category:</b>
+         <span>{{ book.category_name }}</span><br>
+         {% if session.user %}
+         <a href="{{ url_for('browse', book_id=book._id) }}">View Book</a>
+         {% endif %} 
       </div>
-      {% endfor %}
-            </div>
+   </div>
+   {% endfor %}
+</div>
 {% endblock %}
- 
