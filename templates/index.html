@@ -27,7 +27,7 @@
       {% autoescape false %}
       <a class="btn-floating halfway-fab waves-effect waves-light red" target="_blank" href="https://www.amazon.com/s?k={{ book.book_name|replace(' ', '+') }}+{{ book.book_author|replace(' ', '+')}}+book&ref=nb_sb_noss_1"><i  class="material-icons">add_shopping_cart</i></a>
       {% endautoescape %}
-      <div id="descr-carousel" class="white">
+      <div class="white descr-carousel">
          <b>Name:</b>
          <span>{{ book.book_name }}</span><br>
          <b>Author:</b>
