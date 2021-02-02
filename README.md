@@ -274,9 +274,10 @@ Category | Description | Expected Outcome | Pass/Fail
 
 
 ### Responsiveness testing
+
 Several tests were carried out to verify the correct functioning of the project with positive results.
-The functionality of the site is optimal. Browser compatibility is verified for Firefox, Chrome, Edge and Opera on Windows 10 home; Firefox, Chrome on Ubuntu 19.10 and Firefox, Chrome on Android 10. The responsiveness of the pages is suitable on desktop screens, tablets and mobile phones.
-In the folder [project-documentation/testing](), there are screenshots named in the following format: (screen resolution) - Operating system (browser) - screen description.
+The functionality of the site is optimal. Browser compatibility is verified for Firefox and Chrome on Windows 10 home; Firefox, Chrome on Ubuntu 19.10 and Firefox, Chome on Android 10. The responsiveness of the pages is suitable on desktop screens, tablets and mobile phones.
+In the folder [project-documentation/testing](https://github.com/chris92vr/book-mania/blob/master/project-documentation/testing/ "testing"), there are screenshots named in the following format: (screen resolution) - Operating system (browser) - screen description.
 
 
 ## Deployment
