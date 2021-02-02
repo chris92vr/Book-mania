@@ -234,7 +234,7 @@ Relationships between collections are as follows:
 
 - [Balsamiq](https://balsamiq.com/) - Software that was used to create wireframes;
 
-- [DBDiagram](https://dbdiagram.io/home) - A relational database diagram design tool used to create database schema.
+- [QuickDBD](https://www.quickdatabasediagrams.com/) - A relational database diagram design tool used to create database schema.
 
 ## Testing
 
