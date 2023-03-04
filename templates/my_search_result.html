@@ -11,10 +11,10 @@
       <div class="card horizontal small">
          <div class="card-image">
             {% if book.cover_image_url %}
-            <img class="book-image" src="{{ book.cover_image_url }}">                        
+            <img class="book-image" src="{{ book.cover_image_url }}">
             {% else %}
-            <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}"
-               class="img-fluid" alt="Book Image">
+            <img class="book-image" src="{{ url_for('static', filename='images/no-image.png') }}" class="img-fluid"
+               alt="Book Image">
             {% endif %}
          </div>
          <div class="card-stacked">
@@ -33,9 +33,9 @@
                {% if session.user %}
                <a class="blue-text" href="{{ url_for('browse', book_id=book._id) }}">View Book</a>
                {% else %}
-               <a  class="blue-text" href="{{ url_for('register') }}">Register</a>or &nbsp;&nbsp;&nbsp;
-               <a class="blue-text" href="{{ url_for('login') }}">Log In</a>for view review
-               {% endif %} 
+               <a class="blue-text" href="{{ url_for('register') }}">Register</a>or &nbsp;&nbsp;&nbsp;
+               <a class="blue-text" href="{{ url_for('login') }}">Log In</a>for view the review
+               {% endif %}
             </div>
          </div>
       </div>
@@ -49,10 +49,9 @@
          <!--Previous Page-->
          {% if current_page | int > 1 %}
          <li class="page-item">
-            <a class="page-link text-secondary"
-               href="{{ url_for('listing', current_page=current_page-1) }}">
-            <i class="fas fa-arrow-left" aria-hidden="true"></i>
-            <span class="sr-only">Prev</span>
+            <a class="page-link text-secondary" href="{{ url_for('listing', current_page=current_page-1) }}">
+               <i class="fas fa-arrow-left" aria-hidden="true"></i>
+               <span class="sr-only">Prev</span>
             </a>
          </li>
          {% else %}
@@ -66,23 +65,21 @@
          </li>
          {% else %}
          <li class="page-item">
-            <a class="page-link text-secondary"
-               href="{{ url_for('listing', current_page=page_number) }}">{{ page_number }}</a>
+            <a class="page-link text-secondary" href="{{ url_for('listing', current_page=page_number) }}">{{ page_number
+               }}</a>
          </li>
          {% endif %}
          {% endfor %}
          <!--Next Page-->
-         {% if current_page | int < pages | count | int %}
-         <li class="page-item">
-            <a class="page-link text-secondary"
-               href="{{ url_for('listing', current_page=current_page+1) }}">
-            <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            <span class="sr-only">Prev</span>
+         {% if current_page | int < pages | count | int %} <li class="page-item">
+            <a class="page-link text-secondary" href="{{ url_for('listing', current_page=current_page+1) }}">
+               <i class="fas fa-arrow-right" aria-hidden="true"></i>
+               <span class="sr-only">Prev</span>
             </a>
-         </li>
-         {% else %}
-         <li class="page-item disabled"></li>
-         {% endif %}
+            </li>
+            {% else %}
+            <li class="page-item disabled"></li>
+            {% endif %}
       </ul>
    </div>
 </div>
